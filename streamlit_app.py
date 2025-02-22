@@ -155,7 +155,13 @@ if selected_project:
         # Convert amounts to numeric for summation
         for col in ["Total_Amount", "VAT_Amount", "Amount_Before_VAT_(Subtotal)"]:
             if col in df.columns:
-                df[col] = df[col].astype(str).str.replace(",", "").astype(float)
+                df[col] = (
+                    df[col]
+                    .astype(str)
+                    .str.replace(",", "", regex=True)  # Remove commas
+                    .str.replace(r"[^\d.]", "", regex=True)  # Remove non-numeric characters
+                    .astype(float)  # Convert to float
+                )
 
         st.dataframe(df)
 
