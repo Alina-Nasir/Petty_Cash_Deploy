@@ -7,6 +7,7 @@ import numpy as np
 from pyzbar.pyzbar import decode
 import re
 import json
+import fitz  # PyMuPDF for PDF processing
 
 # OpenAI API Key
 OPENAI_API_KEY = st.secrets["API_KEY"]
@@ -28,6 +29,18 @@ def extract_qr_code(image_data):
         return qr_codes[0].data.decode("utf-8")  # Decoding QR content to string
     
     return None  # No QR code found
+
+def extract_images_from_pdf(pdf_data):
+    """Extracts images from each page of a PDF file."""
+    images = []
+    pdf_document = fitz.open(stream=pdf_data, filetype="pdf")
+    
+    for page_num in range(len(pdf_document)):
+        pix = pdf_document[page_num].get_pixmap()
+        image_data = pix.tobytes("png")  # Convert to PNG byte format
+        images.append(image_data)
+    
+    return images
 
 # Function to process invoice using OpenAI API
 def process_invoice(image_data):
@@ -106,7 +119,7 @@ if selected_project:
     st.subheader(f"Project: {selected_project}")
 
     # Upload multiple invoices
-    uploaded_files = st.file_uploader("Upload Invoices (PNG, JPG)", type=["png", "jpg"], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Upload Invoices (PNG, JPG, PDF)", type=["png", "jpg", "pdf"], accept_multiple_files=True)
 
     if st.button("Process Invoices"):
         if uploaded_files:
@@ -117,21 +130,24 @@ if selected_project:
             for uploaded_file in uploaded_files:
                 # Read file as binary
                 file_data = uploaded_file.read()
-
+                if uploaded_file.type == "application/pdf":
+                    images = extract_images_from_pdf(file_data)
+                else:
                 # Process invoice
-                invoice_data = process_invoice(file_data)
+                    images = [file_data]
+                for image_data in images:
+                        invoice_data = process_invoice(image_data)
+                        if invoice_data:
+                            total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
+                            invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
+                            invoice_number = invoice_data.get("Invoice Number")
 
-                if invoice_data:
-                    total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
-                    invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
-                    invoice_number = invoice_data.get("Invoice Number")
-
-                    if invoice_number in existing_invoices:
-                        repeated_invoices.append(invoice_number)
-                    else:
-                        invoice_data["File Name"] = uploaded_file.name  # Track file name
-                        new_invoices.append(invoice_data)
-                        existing_invoices.add(invoice_number)  # Update existing invoices set
+                            if invoice_number in existing_invoices:
+                                repeated_invoices.append(invoice_number)
+                            else:
+                                invoice_data["File Name"] = uploaded_file.name  # Track file name
+                                new_invoices.append(invoice_data)
+                                existing_invoices.add(invoice_number)  # Update existing invoices set
 
             # Save new invoices
             st.session_state.projects[selected_project].extend(new_invoices)
