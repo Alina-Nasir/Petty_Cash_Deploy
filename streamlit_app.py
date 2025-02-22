@@ -49,6 +49,7 @@ def process_invoice(image_data):
                         "- Amount Before VAT (Subtotal)\n"
                         "- VAT Amount\n"
                         "- Total Amount After VAT\n"
+                        "- Check if the invoice contains a QR Code"
                     )},
                     {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}}
                 ]}
@@ -70,7 +71,7 @@ def process_invoice(image_data):
         invoice_data = json.loads(cleaned_json)
 
         # Convert response to dictionary
-        invoice_data["QR Code Present"] = qr_code_present
+        # invoice_data["QR Code Present"] = qr_code_present
         print(invoice_data)
         return invoice_data
 
