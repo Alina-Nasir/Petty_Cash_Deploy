@@ -160,7 +160,7 @@ if selected_project:
                     .astype(str)
                     .str.replace(",", "", regex=True)  # Remove commas
                     .str.replace(r"[^\d.]", "", regex=True)  # Remove non-numeric characters
-                    .astype(float)  # Convert to float
+                    .apply(lambda x: float(x) if re.match(r"^\d+(\.\d+)?$", x) else 0)
                 )
 
         st.dataframe(df)
