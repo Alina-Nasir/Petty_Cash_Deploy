@@ -62,7 +62,7 @@ def process_invoice(image_data):
                         "- Amount Before VAT (Subtotal)\n"
                         "- VAT Amount\n"
                         "- Total Amount After VAT\n"
-                        "- Check if the invoice contains a QR Code"
+                        "- QR Code Present"
                     )},
                     {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}}
                 ]}
