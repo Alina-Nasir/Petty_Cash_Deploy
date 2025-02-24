@@ -50,7 +50,7 @@ def process_invoice(image_data):
         base64_image = base64.b64encode(image_data).decode("utf-8")
 
         # qr_content = extract_qr_code(image_data)
-        qr_code_present = qr_content is not None
+        # qr_code_present = qr_content is not None
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
