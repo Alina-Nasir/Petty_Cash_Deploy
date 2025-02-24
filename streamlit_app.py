@@ -4,7 +4,7 @@ import pandas as pd
 import base64
 import cv2
 import numpy as np
-from pyzbar.pyzbar import decode
+# from pyzbar.pyzbar import decode
 import re
 import json
 import fitz  # PyMuPDF for PDF processing
@@ -19,17 +19,17 @@ if "projects" not in st.session_state:
     st.session_state.projects = {}  # Dictionary to store project data
 
 # Function to check if a QR code is present in the image
-def extract_qr_code(image_data):
-    """Detects and extracts QR code content from the image."""
-    nparr = np.frombuffer(image_data, np.uint8)
-    image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    qr_codes = decode(image)
+# def extract_qr_code(image_data):
+#     """Detects and extracts QR code content from the image."""
+#     nparr = np.frombuffer(image_data, np.uint8)
+#     image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+#     qr_codes = decode(image)
 
-    # If QR codes are found, extract the first one
-    if qr_codes:
-        return qr_codes[0].data.decode("utf-8")  # Decoding QR content to string
+#     # If QR codes are found, extract the first one
+#     if qr_codes:
+#         return qr_codes[0].data.decode("utf-8")  # Decoding QR content to string
     
-    return None  # No QR code found
+#     return None  # No QR code found
 
 def extract_images_from_pdf(pdf_data):
     """Extracts images from each page of a PDF file."""
@@ -49,7 +49,7 @@ def process_invoice(image_data):
     try:
         base64_image = base64.b64encode(image_data).decode("utf-8")
 
-        qr_content = extract_qr_code(image_data)
+        # qr_content = extract_qr_code(image_data)
         qr_code_present = qr_content is not None
         response = client.chat.completions.create(
             model="gpt-4o-mini",
