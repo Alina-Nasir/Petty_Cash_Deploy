@@ -8,6 +8,7 @@ from pyzbar.pyzbar import decode
 import re
 import json
 import fitz  # PyMuPDF for PDF processing
+import plotly.express as px  # Import Plotly for visualization
 
 # OpenAI API Key
 OPENAI_API_KEY = st.secrets["API_KEY"]
@@ -115,6 +116,15 @@ if st.sidebar.button("Add Project"):
 # Select Project Dropdown
 selected_project = st.sidebar.selectbox("Select a Project", list(st.session_state.projects.keys()))
 
+if selected_project not in st.session_state.projects:
+    st.session_state.projects[selected_project] = []
+
+if f"{selected_project}_supplier_vat_missing_count" not in st.session_state:
+    st.session_state[f"{selected_project}_supplier_vat_missing_count"] = 0
+
+if f"{selected_project}_missing_data_records" not in st.session_state:
+    st.session_state[f"{selected_project}_missing_data_records"] = []
+
 if selected_project:
     st.subheader(f"Project: {selected_project}")
 
@@ -141,6 +151,20 @@ if selected_project:
                             total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
                             invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
                             invoice_number = invoice_data.get("Invoice Number")
+
+                            # Check for missing fields
+                            missing_fields = [key for key, value in invoice_data.items() if value in (None, "", "N/A")]
+
+                            if missing_fields:
+                                st.session_state[f"{selected_project}_missing_data_records"].append({
+                                    "Invoice Number": invoice_number,
+                                    "Missing Fields": ", ".join(missing_fields)
+                                })
+
+                             # Check if Supplier VAT is missing
+                            supplier_vat_key = "Supplier VAT" if "Supplier VAT" in invoice_data else "Supplier_VAT"
+                            if invoice_data.get(supplier_vat_key) in (None, "", "N/A"):
+                                st.session_state[f"{selected_project}_supplier_vat_missing_count"] += 1
 
                             if invoice_number in existing_invoices:
                                 repeated_invoices.append(invoice_number)
@@ -188,3 +212,55 @@ if selected_project:
 
         st.markdown(f"### **Total Amount: {total_amount:.2f}**")
         st.markdown(f"### **Total VAT: {total_vat:.2f}**")
+
+        # Display Missing Data Table
+        if st.session_state[f"{selected_project}_missing_data_records"]:
+            st.markdown("### **Invoices with Missing Data**")
+            missing_df = pd.DataFrame(st.session_state[f"{selected_project}_missing_data_records"])
+            st.dataframe(missing_df)
+
+        # Generate Donut Chart for Supplier VAT Status
+        total_invoices = len(st.session_state.projects[selected_project])  # Total invoices in the project
+        supplier_vat_missing_count = st.session_state[f"{selected_project}_supplier_vat_missing_count"]
+        invoices_with_supplier_vat = total_invoices - supplier_vat_missing_count  # Those with Supplier VAT
+
+        if total_invoices > 0:
+            vat_data = {
+                "Category": ["Has Supplier VAT", "Missing Supplier VAT"],
+                "Count": [invoices_with_supplier_vat, supplier_vat_missing_count]
+            }
+            vat_df = pd.DataFrame(vat_data)
+
+            # Create a Donut Chart
+            fig = px.pie(vat_df, names="Category", values="Count", hole=0.4, 
+                        title="Invoices with vs. without Supplier VAT",
+                        color_discrete_sequence=["#1f77b4", "#ff7f0e"])  # Blue & Orange
+
+            # Display Donut Chart in Streamlit
+            st.plotly_chart(fig)
+
+        # Count invoices with a QR code, handling both key variations and ensuring boolean values
+        qr_code_present_count = sum(
+            bool(inv.get("QR Code Present") in [True, "True", 1]) or 
+            bool(inv.get("QR_Code_Present") in [True, "True", 1]) 
+            for inv in st.session_state.projects[selected_project]
+        )
+
+        qr_code_missing_count = total_invoices - qr_code_present_count  # Invoices without a QR code
+
+        if total_invoices > 0:
+            qr_data = {
+                "QR Code Status": ["With QR Code", "Without QR Code"],
+                "Count": [qr_code_present_count, qr_code_missing_count]
+            }
+            qr_df = pd.DataFrame(qr_data)
+
+            # Create a Bar Chart
+            fig_qr = px.bar(qr_df, x="QR Code Status", y="Count", 
+                            title="Invoices with vs. without QR Code",
+                            color="QR Code Status",
+                            color_discrete_sequence=["#2ca02c", "#d62728"],  # Green & Red
+                            text="Count")
+
+            # Display Bar Chart in Streamlit
+            st.plotly_chart(fig_qr)
