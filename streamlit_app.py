@@ -9,16 +9,10 @@ import re
 import json
 import fitz  # PyMuPDF for PDF processing
 import plotly.express as px  # Import Plotly for visualization
-from pymongo import MongoClient
 
 # OpenAI API Key
 OPENAI_API_KEY = st.secrets["API_KEY"]
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
-MONGO_URI = st.secrets["MONGO_URI"]  # Store this in Streamlit Secrets
-mongo_client = MongoClient(MONGO_URI)
-db = mongo_client["PettyCash"]  # Connect to the database
-invoice_collection = db["Invoice"]
-projects_coll = db["Project"]
 
 # Initialize session state for projects if not already initialized
 if "projects" not in st.session_state:
@@ -189,8 +183,8 @@ project_name = st.sidebar.text_input("Enter New Project Name")
 
 if st.sidebar.button("Add Project"):
     if project_name:
-        if project_name and not projects_coll.find_one({"project_name": project_name}):
-            projects_coll.insert_one({"project_name": project_name})
+        if project_name not in st.session_state.projects:
+            st.session_state.projects[project_name] = []  # Initialize project with empty invoice list
             st.sidebar.success(f"Project '{project_name}' added!")
         else:
             st.sidebar.warning("Project already exists!")
@@ -198,7 +192,7 @@ if st.sidebar.button("Add Project"):
         st.sidebar.error("Project name cannot be empty.")
 
 # Select Project Dropdown
-selected_project = st.sidebar.selectbox("Select a Project", [p['project_name'] for p in projects_coll.find()])
+selected_project = st.sidebar.selectbox("Select a Project", list(st.session_state.projects.keys()))
 
 # Navigation Options
 page_selection = st.sidebar.radio("Navigation", ["Project Overview", "Analytics"])
@@ -221,7 +215,7 @@ if selected_project:
 
         if st.button("Process Invoices"):
             if uploaded_files:
-                existing_invoices = {inv["Invoice_Number"] for inv in invoice_collection.find({"Project": selected_project})}  # Track existing invoice numbers
+                existing_invoices = {inv["Invoice_Number"] for inv in st.session_state.projects[selected_project]}  # Track existing invoice numbers
                 new_invoices = []
                 repeated_invoices = []
 
@@ -258,7 +252,6 @@ if selected_project:
                                     repeated_invoices.append(invoice_number)
                                 else:
                                     invoice_data["File Name"] = uploaded_file.name  # Track file name
-                                    invoice_data["Project"] = selected_project
                                     new_invoices.append(invoice_data)
                                     existing_invoices.add(invoice_number)  # Update existing invoices set
 
@@ -267,7 +260,6 @@ if selected_project:
 
                 # Success message
                 if new_invoices:
-                    invoice_collection.insert_many(new_invoices)
                     st.success(f"Processed {len(new_invoices)} new invoice(s) successfully!")
 
                 # Warning for duplicates
@@ -275,55 +267,62 @@ if selected_project:
                     st.warning(f"Skipped {len(repeated_invoices)} repeated invoice(s): {', '.join(repeated_invoices)}")
 
         # Display Invoices in a Table
-        if selected_project:
-            invoices = list(invoice_collection.find({"Project": selected_project}))
-            if invoices:
-                # Convert to DataFrame
-                df = pd.DataFrame(invoices)
+        if st.session_state.projects[selected_project]:
+            df = pd.DataFrame(st.session_state.projects[selected_project])
+            df.columns = df.columns.str.replace(" ", "_")  # Replace spaces with underscores
+            df.columns = df.columns.str.replace("-", "_")  # Replace hyphens with underscores
 
-                # Drop MongoDB `_id` field
-                df = df.drop(columns=["_id", "Line_Items"], errors="ignore")
+            # Drop duplicate column headers if they exist
+            df = df.loc[:, ~df.columns.duplicated()]
+            # ✅ Remove the "Line_Items" column if it exists
+            df = df.drop(columns=["Line_Items"], errors="ignore")
 
-                # Clean column names
-                df.columns = df.columns.str.replace(" ", "_").str.replace("-", "_")
+            # Convert amounts to numeric for summation
+            for col in ["Total_Amount", "VAT_Amount", "Amount_Before_VAT"]:
+                if col in df.columns:
+                    df[col] = (
+                        df[col]
+                        .astype(str)
+                        .str.replace(",", "", regex=True)  # Remove commas
+                        .str.replace(r"[^\d.]", "", regex=True)  # Remove non-numeric characters
+                        .apply(lambda x: float(x) if re.match(r"^\d+(\.\d+)?$", x) else 0)
+                    )
 
-                # Convert amounts to numeric
-                for col in ["Total_Amount", "VAT_Amount", "Amount_Before_VAT"]:
-                    if col in df.columns:
-                        df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0)
+            st.dataframe(df)
+            # Toggle Section for Viewing Line Items
+            for invoice in st.session_state.projects[selected_project]:
+                invoice_number = invoice.get("Invoice_Number", "Unknown")
 
-                # Display invoices table
-                st.dataframe(df)
+                # Ensure Line Items is always a list
+                if "Line_Items" in invoice:
+                    if isinstance(invoice["Line_Items"], str):  # If stored as a string, convert it back to a list
+                        try:
+                            invoice["Line_Items"] = json.loads(invoice["Line_Items"])
+                        except json.JSONDecodeError:
+                            invoice["Line_Items"] = []  # If conversion fails, set an empty list
 
-                # Display Line Items
-                for invoice in invoices:
-                    invoice_number = invoice.get("Invoice_Number", "Unknown")
-                    line_items = invoice.get("Line_Items", [])
+                if "Line_Items" in invoice and invoice["Line_Items"]:
+                    with st.expander(f"📌 View Line Items for Invoice: {invoice_number}"):
+                        line_items_df = pd.DataFrame(invoice["Line_Items"])
+                        line_items_df.columns = line_items_df.columns.str.replace(" ", "_").str.replace("-", "_")  # Clean column names
 
-                    if line_items:
-                        with st.expander(f"📌 View Line Items for Invoice: {invoice_number}"):
-                            line_items_df = pd.DataFrame(line_items)
+                        # Convert numerical columns to correct data type
+                        numeric_columns = ["Quantity", "Unit_Price", "Total_Price"]
+                        for col in numeric_columns:
+                            if col in line_items_df.columns:
+                                line_items_df[col] = pd.to_numeric(line_items_df[col], errors="coerce")
 
-                            # Clean column names
-                            line_items_df.columns = line_items_df.columns.str.replace(" ", "_").str.replace("-", "_")
+                        st.dataframe(line_items_df, use_container_width=True)
 
-                            # Convert numerical values
-                            numeric_columns = ["Quantity", "Unit_Price", "Total_Price"]
-                            for col in numeric_columns:
-                                if col in line_items_df.columns:
-                                    line_items_df[col] = pd.to_numeric(line_items_df[col], errors="coerce").fillna(0)
 
-                            st.dataframe(line_items_df, use_container_width=True)
 
-                # Display total amounts
-                total_amount = df["Total_Amount"].sum()
-                total_vat = df["VAT_Amount"].sum()
 
-                st.markdown(f"### **Total Amount: {total_amount:,.2f}**")
-                st.markdown(f"### **Total VAT: {total_vat:,.2f}**")
+            # Display Total Amount and Total VAT at the bottom
+            total_amount = df["Total_Amount"].sum()
+            total_vat = df["VAT_Amount"].sum()
 
-            else:
-                st.warning("No invoices found for this project.")
+            st.markdown(f"### **Total Amount: {total_amount:.2f}**")
+            st.markdown(f"### **Total VAT: {total_vat:.2f}**")
 
             # Display Missing Data Table
             if st.session_state[f"{selected_project}_missing_data_records"]:
@@ -334,19 +333,11 @@ if selected_project:
     elif page_selection == "Analytics":
         st.title("📊 Project Analytics")
         # Generate Donut Chart for Supplier VAT Status
-        # Embed Zoho Analytics Dashboard
-        zoho_dashboard_url = "https://analytics.zoho.com/open-view/3032881000000004219"
-
-        # Using Streamlit's iframe component
-        st.components.v1.iframe(zoho_dashboard_url, width=800, height=600)
-        invoices = list(invoice_collection.find({"Project": selected_project}))
-        total_invoices = len(invoices)  # Total invoices in the project
+        total_invoices = len(st.session_state.projects[selected_project])  # Total invoices in the project
+        supplier_vat_missing_count = st.session_state[f"{selected_project}_supplier_vat_missing_count"]
+        invoices_with_supplier_vat = total_invoices - supplier_vat_missing_count  # Those with Supplier VAT
 
         if total_invoices > 0:
-            # Count invoices with and without Supplier VAT
-            invoices_with_supplier_vat = sum(1 for inv in invoices if inv.get("Supplier_VAT"))
-            supplier_vat_missing_count = total_invoices - invoices_with_supplier_vat
-
             vat_data = {
                 "Category": ["Has Supplier VAT", "Missing Supplier VAT"],
                 "Count": [invoices_with_supplier_vat, supplier_vat_missing_count]
@@ -361,12 +352,15 @@ if selected_project:
             # Display Donut Chart in Streamlit
             st.plotly_chart(fig)
 
-            # Count invoices with a QR code, handling both key variations and ensuring boolean values
-            qr_code_present_count = sum(
-                bool(inv.get("QR_Code_Present") in [True, "True", 1]) for inv in invoices
-            )
-            qr_code_missing_count = total_invoices - qr_code_present_count
+        # Count invoices with a QR code, handling both key variations and ensuring boolean values
+        qr_code_present_count = sum(
+            bool(inv.get("QR_Code_Present") in [True, "True", 1]) 
+            for inv in st.session_state.projects[selected_project]
+        )
 
+        qr_code_missing_count = total_invoices - qr_code_present_count  # Invoices without a QR code
+
+        if total_invoices > 0:
             qr_data = {
                 "QR Code Status": ["With QR Code", "Without QR Code"],
                 "Count": [qr_code_present_count, qr_code_missing_count]
@@ -382,5 +376,3 @@ if selected_project:
 
             # Display Bar Chart in Streamlit
             st.plotly_chart(fig_qr)
-        else:
-            st.warning("No invoices found for this project.")
