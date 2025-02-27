@@ -56,10 +56,11 @@ def process_invoice(image_data):
     base64_image = base64.b64encode(image_data).decode("utf-8")
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=[
             {"role": "system","content": (
                 "You are an AI specialized in extracting structured data from invoices."
+                "The invoice may contain text in English or Arabic, or both."
                 "Your response must always be a valid JSON object, formatted exactly as follows:"
                 "\n```json\n"
                 "{"
