@@ -5,6 +5,8 @@ import base64
 import cv2
 import numpy as np
 from pyzbar.pyzbar import decode
+from PIL import Image
+import io
 import re
 import json
 import fitz  # PyMuPDF for PDF processing
@@ -80,6 +82,34 @@ def extract_images_from_pdf(pdf_data):
         images.append(image_data)
     
     return images
+
+def merge_images_vertically(image_list):
+    """Merges multiple invoice images vertically into a single image."""
+    
+    # Convert byte images to PIL Image objects
+    images = [Image.open(io.BytesIO(img)) for img in image_list]
+
+    # Find the max width and total height
+    max_width = max(img.width for img in images)
+    total_height = sum(img.height for img in images)
+
+    # Create a blank white canvas
+    merged_image = Image.new("RGB", (max_width, total_height), "white")
+
+    # Paste images on top of each other
+    y_offset = 0
+    for img in images:
+        # Resize image to match the widest one while keeping aspect ratio
+        if img.width < max_width:
+            img = img.resize((max_width, int(img.height * (max_width / img.width))))
+        
+        merged_image.paste(img, (0, y_offset))
+        y_offset += img.height  # Move offset for next image
+
+    # Convert back to bytes
+    img_byte_array = io.BytesIO()
+    merged_image.save(img_byte_array, format="PNG")
+    return img_byte_array.getvalue()
 
 # Function to process invoice using OpenAI API
 def process_invoice(image_data):
@@ -213,7 +243,7 @@ def process_invoice(image_data):
         new_invoice_data['QR_Code_Valid'] = True
         for key, qr_value in qr_data.items():
             if key in new_invoice_data and qr_value:
-                if key == "Supplier_Name":
+                if key == "Supplier_Name" or key == "Invoice_Date":
                     continue
                 if new_invoice_data[key] != qr_value:
                     # Update other fields normally
@@ -270,7 +300,7 @@ if selected_project:
 
         # Upload multiple invoices
         uploaded_files = st.file_uploader("Upload Invoices (PNG, JPG, PDF)", type=["png", "jpg", "pdf"], accept_multiple_files=True)
-
+        pdf_type = st.radio("Is your PDF file:", ["One Invoice (Multiple Pages)", "Multiple Single-Page Invoices"])
         if st.button("Process Invoices"):
             if uploaded_files:
                 existing_invoices = {inv["Invoice_Number"] for inv in invoice_collection.find({"Project": selected_project})}  # Track existing invoice numbers
@@ -281,7 +311,12 @@ if selected_project:
                     # Read file as binary
                     file_data = uploaded_file.read()
                     if uploaded_file.type == "application/pdf":
+                        split_invoices = (pdf_type == "Multiple Single-Page Invoices")
                         images = extract_images_from_pdf(file_data)
+                        if not split_invoices:
+                            # If it's a single invoice spanning multiple pages, merge images
+                            merged_invoice_image = merge_images_vertically(images)
+                            images = [merged_invoice_image]
                     else:
                     # Process invoice
                         images = [file_data]
