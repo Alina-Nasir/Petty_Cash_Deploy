@@ -4,7 +4,7 @@ import pandas as pd
 import base64
 import cv2
 import numpy as np
-# from pyzbar.pyzbar import decode
+from pyzbar.pyzbar import decode
 import re
 import json
 import fitz  # PyMuPDF for PDF processing
@@ -25,17 +25,49 @@ if "projects" not in st.session_state:
     st.session_state.projects = {}  # Dictionary to store project data
 
 # Function to check if a QR code is present in the image
-# def extract_qr_code(image_data):
-#     """Detects and extracts QR code content from the image."""
-#     nparr = np.frombuffer(image_data, np.uint8)
-#     image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-#     qr_codes = decode(image)
+def extract_qr_code(image_data):
+    """Detects and extracts QR code content from the image."""
+    nparr = np.frombuffer(image_data, np.uint8)
+    image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    qr_codes = decode(image)
 
-#     # If QR codes are found, extract the first one
-#     if qr_codes:
-#         return qr_codes[0].data.decode("utf-8")  # Decoding QR content to string
+    # If QR codes are found, extract the first one
+    if qr_codes:
+        return qr_codes[0].data.decode("utf-8")  # Decoding QR content to string
     
-#     return None  # No QR code found
+    return None  # No QR code found
+
+def decode_tlv_qr(qr_string):
+    """
+    Decodes the extracted QR code data (Base64-encoded TLV format) 
+    used in E-Invoice QR Reader KSA.
+    """
+    try:
+        qr_bytes = base64.b64decode(qr_string)
+        fields = []
+        i = 0
+        def to_float(value):
+            try:
+                return float(value) if value else None
+            except ValueError:
+                return None  # If conversion fails, return None instead of crashing
+        
+        while i < len(qr_bytes):
+            tag = qr_bytes[i]
+            length = qr_bytes[i + 1]
+            value = qr_bytes[i + 2 : i + 2 + length].decode('utf-8')
+            fields.append(value)
+            i += 2 + length
+
+        return {
+            "Supplier_Name": fields[0] if len(fields) > 0 else None,
+            "Supplier_VAT": fields[1] if len(fields) > 1 else None,
+            "Invoice_Date": fields[2] if len(fields) > 2 else None,
+            "Total_Amount_After_VAT": to_float(fields[3]) if len(fields) > 3 else None,
+            "VAT_Amount": to_float(fields[4]) if len(fields) > 4 else None
+        }
+    except Exception as e:
+        return {"Error": str(e)}
 
 def extract_images_from_pdf(pdf_data):
     """Extracts images from each page of a PDF file."""
@@ -61,6 +93,7 @@ def process_invoice(image_data):
             {"role": "system","content": (
                 "You are an AI specialized in extracting structured data from invoices."
                 "The invoice may contain text in English or Arabic, or both."
+                "The supplier name is company that issued invoice."
                 "Your response must always be a valid JSON object, formatted exactly as follows:"
                 "\n```json\n"
                 "{"
@@ -169,7 +202,25 @@ def process_invoice(image_data):
             }
             for item in line_items
         ]
+    qr_code_string = extract_qr_code(image_data)
+    if qr_code_string:
+        qr_data = decode_tlv_qr(qr_code_string)
+    else:
+        qr_data = None
 
+    if qr_data:
+        print(qr_data)
+        new_invoice_data['QR_Code_Valid'] = True
+        for key, qr_value in qr_data.items():
+            if key in new_invoice_data and qr_value:
+                if key == "Supplier_Name":
+                    continue
+                if new_invoice_data[key] != qr_value:
+                    # Update other fields normally
+                    print(f"Updating {key}: {new_invoice_data[key]} → {qr_value}")
+                    new_invoice_data[key] = qr_value
+    else:
+        new_invoice_data['QR_Code_Valid'] = False
     print(new_invoice_data)
     return new_invoice_data  # Return consistent structured data
 
@@ -277,6 +328,7 @@ if selected_project:
 
         # Display Invoices in a Table
         if selected_project:
+            missing_data_records = []
             invoices = list(invoice_collection.find({"Project": selected_project}))
             if invoices:
                 # Convert to DataFrame
@@ -295,10 +347,18 @@ if selected_project:
 
                 # Display invoices table
                 st.dataframe(df)
+                required_fields = ["Invoice_Number", "Invoice_Date", "Supplier_Name", "Supplier_VAT", 
+                                "Customer_Name", "Customer_VAT", "Amount_Before_VAT", "VAT_Amount", "Total_Amount"]
 
                 # Display Line Items
                 for invoice in invoices:
                     invoice_number = invoice.get("Invoice_Number", "Unknown")
+                    missing_fields = [field for field in required_fields if not invoice.get(field)]
+                    if missing_fields:
+                        missing_data_records.append({
+                            "Invoice_Number": invoice.get("Invoice_Number", "Unknown"),
+                            "Missing_Fields": ", ".join(missing_fields)
+                        })
                     line_items = invoice.get("Line_Items", [])
 
                     if line_items:
@@ -327,9 +387,9 @@ if selected_project:
                 st.warning("No invoices found for this project.")
 
             # Display Missing Data Table
-            if st.session_state[f"{selected_project}_missing_data_records"]:
+            if missing_data_records:
                 st.markdown("### **Invoices with Missing Data**")
-                missing_df = pd.DataFrame(st.session_state[f"{selected_project}_missing_data_records"])
+                missing_df = pd.DataFrame(missing_data_records)
                 st.dataframe(missing_df)
 
     elif page_selection == "Analytics":
