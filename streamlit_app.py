@@ -263,7 +263,7 @@ def process_invoice(image_data):
 
 
 # Streamlit App Layout
-st.title("Invoice Processing App")
+st.title("AI Petty Cash Manager")
 
 # Sidebar: Add New Project
 st.sidebar.header("Project Management")
