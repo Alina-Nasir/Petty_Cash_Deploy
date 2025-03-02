@@ -243,7 +243,7 @@ def process_invoice(image_data):
         new_invoice_data['QR_Code_Valid'] = True
         for key, qr_value in qr_data.items():
             if key in new_invoice_data and qr_value:
-                if key == "Supplier_Name" or key == "Invoice_Date":
+                if key == "Supplier_Name":
                     continue
                 if new_invoice_data[key] != qr_value:
                     # Update other fields normally
