@@ -266,6 +266,7 @@ def process_invoice(image_data):
 st.title("AI Petty Cash Manager")
 
 # Sidebar: Add New Project
+st.sidebar.image('JFF-LOGO-White-removebg.png',width = 100)
 st.sidebar.header("Project Management")
 project_name = st.sidebar.text_input("Enter New Project Name")
 
@@ -284,6 +285,7 @@ selected_project = st.sidebar.selectbox("Select a Project", [p['project_name'] f
 
 # Navigation Options
 page_selection = st.sidebar.radio("Navigation", ["Project Overview", "Analytics"])
+
 
 if selected_project not in st.session_state.projects:
     st.session_state.projects[selected_project] = []
