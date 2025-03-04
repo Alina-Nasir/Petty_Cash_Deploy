@@ -118,7 +118,7 @@ def process_invoice(image_data):
     base64_image = base64.b64encode(image_data).decode("utf-8")
 
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system","content": (
                 "You are an AI specialized in extracting structured data from invoices."
