@@ -13,6 +13,8 @@ import fitz  # PyMuPDF for PDF processing
 import plotly.express as px  # Import Plotly for visualization
 from pymongo import MongoClient
 
+
+#--------------------------------------------------------------------------API KEY INITIALIZATIONS--------------------------------------------------------------------------
 # OpenAI API Key
 OPENAI_API_KEY = st.secrets["API_KEY"]
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
@@ -26,6 +28,8 @@ projects_coll = db["Project"]
 if "projects" not in st.session_state:
     st.session_state.projects = {}  # Dictionary to store project data
 
+
+#--------------------------------------------------------------------------IMAGE DATA EXTRACTION--------------------------------------------------------------------------
 # Function to check if a QR code is present in the image
 def extract_qr_code(image_data):
     """Detects and extracts QR code content from the image."""
@@ -111,7 +115,8 @@ def merge_images_vertically(image_list):
     merged_image.save(img_byte_array, format="PNG")
     return img_byte_array.getvalue()
 
-# Function to process invoice using OpenAI API
+
+#-----------------------------------------------------------------------INVOICE PROCESSING USING OPENAI-----------------------------------------------------------------------
 def process_invoice(image_data):
     """Extract structured data from an invoice image using GPT-4o and ensure consistent key formatting."""
     # try:
@@ -262,11 +267,161 @@ def process_invoice(image_data):
     return None  # Return None if an error occurs
 
 
-# Streamlit App Layout
+#--------------------------------------------------------------------------CHATBOT INTEGRATION--------------------------------------------------------------------------
+from datetime import datetime
+from dateutil import parser
+import groq
+from langchain_groq import ChatGroq
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+groq_client = groq.Groq(api_key = GROQ_API_KEY)
+groq_llm = ChatGroq(
+    model = "llama-3.1-8b-instant",
+    temperature = 0.2,
+)
+
+
+def get_filtered_invoices(query):
+    """Parse query text to extract filters, then query MongoDB."""
+    filters = {}
+
+    # --- Extract basic filters ---
+    month = extract_month(query)
+    year = extract_year(query)
+    quarter, q_year = extract_quarter(query)
+
+    if quarter and q_year:
+        start_month = (quarter - 1) * 3 + 1
+        filters["Invoice_Date"] = {
+            "$gte": datetime(q_year, start_month, 1),
+            "$lt": datetime(q_year, start_month + 3, 1)
+        }
+
+    elif month and year:
+        filters["Invoice_Date"] = {
+            "$gte": datetime(year, month, 1),
+            "$lt": datetime(year, month + 1 if month < 12 else 1, 1)
+        }
+
+    elif year:
+        filters["Invoice_Date"] = {
+            "$gte": datetime(year, 1, 1),
+            "$lt": datetime(year + 1, 1, 1)
+        }
+
+    if "vat valid" in query.lower():
+        filters["QR_Code_Valid"] = True
+
+    if "invalid vat" in query.lower():
+        filters["QR_Code_Valid"] = False
+
+    # --- Query MongoDB ---
+    results = list(invoice_collection.find(filters))
+    return results
+
+
+def extract_month(query):
+    months = {
+        "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+        "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12
+    }
+    for name, number in months.items():
+        if name in query.lower():
+            return number
+    return None
+
+def extract_year(query):
+    now = datetime.now()
+    if "last year" or "previous year" in query.lower():
+        return now.year - 1
+    elif "this year" or "current year" in query.lower():
+        return now.year
+    match = re.search(r"(20\d{2})", query)
+    return int(match.group(1)) if match else None
+
+def extract_quarter(query):
+    match = re.search(r"q([1-4])[\s\-]?(20\d{2})?", query.lower())
+    if match:
+        quarter = int(match.group(1))
+        year = int(match.group(2)) if match.group(2) else datetime.now().year
+        return quarter, year
+
+    return None, None
+
+
+def llm_output(invoices, query, llm=groq_llm):
+    data = ""
+    for invoice in invoices[0:len(invoices)]:
+        line_items = invoice.get('Line_Items', [])
+        if not isinstance(line_items, list):
+            # Handle if someone accidentally stored a bool or dict in the DB
+            line_items = []
+
+        try:
+            item_names = [item.get('Item_Name', 'Unknown') for item in line_items]
+        except Exception as e:
+            item_names = []
+            print(f"Error while iterating line_items: {e}")
+
+        data += f"""
+            - Invoice Number: {invoice.get('Invoice_Number')}
+              Date: {invoice.get('Invoice_Date')}
+              Supplier Name: {invoice.get('Supplier_Name')}
+              Supplier VAT: {invoice.get('Supplier_VAT')}
+              Customer Name: {invoice.get('Customer_Name')}
+              Customer VAT: {invoice.get('Customer_VAT')}
+              Amount Before VAT: {invoice.get('Amount_Before_VAT')}
+              VAT Amount: {invoice.get('VAT_Amount')}
+              Total Amount After VAT: {invoice.get('Total_Amount_After_VAT')}
+              QR Code Present: {invoice.get('QR_Code_Present')}
+              Items: {item_names}\n
+        """
+
+    messages = [
+        {
+            'role': 'system', 'content': "You are an invoice data assistant that returns answers to the users queries in a structured manner, you are thorough and accurate"
+        },
+        {
+            'role': 'user', 'content': f"""
+                User question: {query}
+                Here is the invoice data: {data}
+                Now provide a concise summary...
+            """
+        }
+    ]
+
+    try:
+        response = llm.invoke(messages)
+        return response.content.strip()
+    except Exception as e:
+        return f"LLM Error: {e}"
+
+
+def normalize_date(date_str):
+    try:
+        parsed = parser.parse(str(date_str), dayfirst=True, fuzzy=True)
+        return parsed.strftime("%d/%m/%y")
+    except Exception as e:
+        print(f"[Date Normalization Error]: {e} — Input: {date_str}")
+        return date_str
+
+
+def handle_query(query, project):
+    filters = get_filtered_invoices(query)
+    
+    if not isinstance(filters, list):
+        return "❌ Unexpected data structure."
+
+    if not filters:
+        filters = list(invoice_collection.find({"Project": project}))
+
+    return llm_output(filters, query)
+
+
+#--------------------------------------------------------------------------STREAMLIT APP--------------------------------------------------------------------------
 st.title("AI Petty Cash Manager")
 
 # Sidebar: Add New Project
-st.sidebar.image('JFF-LOGO-White-removebg.png',width = 100)
+#st.sidebar.image('JFF-LOGO-White-removebg.png',width = 100)
 st.sidebar.header("Project Management")
 project_name = st.sidebar.text_input("Enter New Project Name")
 
@@ -298,6 +453,8 @@ if f"{selected_project}_missing_data_records" not in st.session_state:
 
 if selected_project:
     st.subheader(f"Project: {selected_project}")
+
+#--------------------------------------------------------------------------PAGE: PROJECT OVERVIEW--------------------------------------------------------------------------
     if page_selection == "Project Overview":
 
         # Upload multiple invoices
@@ -322,34 +479,34 @@ if selected_project:
                     else:
                     # Process invoice
                         images = [file_data]
-                    for image_data in images:
-                            invoice_data = process_invoice(image_data)
-                            if invoice_data:
-                                total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
-                                invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
-                                invoice_number = invoice_data.get("Invoice_Number")
+                        for image_data in images:
+                                invoice_data = process_invoice(image_data)
+                                if invoice_data:
+                                    total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
+                                    invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
+                                    invoice_number = invoice_data.get("Invoice_Number")
 
-                                # Check for missing fields
-                                missing_fields = [key for key, value in invoice_data.items() if value in (None, "", "N/A")]
+                                    # Check for missing fields
+                                    missing_fields = [key for key, value in invoice_data.items() if value in (None, "", "N/A")]
 
-                                if missing_fields:
-                                    st.session_state[f"{selected_project}_missing_data_records"].append({
-                                        "Invoice_Number": invoice_number,
-                                        "Missing Fields": ", ".join(missing_fields)
-                                    })
+                                    if missing_fields:
+                                        st.session_state[f"{selected_project}_missing_data_records"].append({
+                                            "Invoice_Number": invoice_number,
+                                            "Missing Fields": ", ".join(missing_fields)
+                                        })
 
-                                # Check if Supplier VAT is missing
-                                supplier_vat_key = "Supplier VAT" if "Supplier VAT" in invoice_data else "Supplier_VAT"
-                                if invoice_data.get(supplier_vat_key) in (None, "", "N/A"):
-                                    st.session_state[f"{selected_project}_supplier_vat_missing_count"] += 1
+                                    # Check if Supplier VAT is missing
+                                    supplier_vat_key = "Supplier VAT" if "Supplier VAT" in invoice_data else "Supplier_VAT"
+                                    if invoice_data.get(supplier_vat_key) in (None, "", "N/A"):
+                                        st.session_state[f"{selected_project}_supplier_vat_missing_count"] += 1
 
-                                if invoice_number in existing_invoices:
-                                    repeated_invoices.append(invoice_number)
-                                else:
-                                    invoice_data["File Name"] = uploaded_file.name  # Track file name
-                                    invoice_data["Project"] = selected_project
-                                    new_invoices.append(invoice_data)
-                                    existing_invoices.add(invoice_number)  # Update existing invoices set
+                                    if invoice_number in existing_invoices:
+                                        repeated_invoices.append(invoice_number)
+                                    else:
+                                        invoice_data["File Name"] = uploaded_file.name  # Track file name
+                                        invoice_data["Project"] = selected_project
+                                        new_invoices.append(invoice_data)
+                                        existing_invoices.add(invoice_number)  # Update existing invoices set
 
                 # Save new invoices
                 st.session_state.projects[selected_project].extend(new_invoices)
@@ -429,6 +586,66 @@ if selected_project:
                 missing_df = pd.DataFrame(missing_data_records)
                 st.dataframe(missing_df)
 
+
+#--------------------------------------------------------------------------CHATBOT FUNCTIONALITY--------------------------------------------------------------------------
+            if "chat_history" not in st.session_state:
+                st.session_state.chat_history = []
+
+            st.markdown("""
+            <style>
+            .chat-container {
+                padding: 10px;
+            }
+            .user-bubble {
+                background-color: #262730;
+                color: white;
+                padding: 10px 15px;
+                margin-bottom: 5px;
+                border-radius: 15px;
+                max-width: 80%;
+                align-self: flex-end;
+                margin-left: auto;
+            }
+            .bot-bubble {
+                background-color: #262730;
+                color: white;
+                padding: 10px 15px;
+                margin-bottom: 5px;
+                border-radius: 15px;
+                max-width: 80%;
+                align-self: flex-start;
+                margin-right: auto;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+            # Input box first
+            st.markdown("### 💬 Ask a question about your invoices")
+            query = st.text_input("Type your question:", key="user_query")
+            
+            left_col, mid_col, right_col = st.columns([2, 2, 2])
+            with left_col:
+                if st.button("Clear Chat History", use_container_width = True):
+                    st.session_state.chat_history = []
+            with right_col:
+                submit_clicked = st.button("Submit", use_container_width=True)
+            
+            if submit_clicked and query.strip():
+                with st.spinner("Processing your query..."):
+                    try:
+                        response = handle_query(query, selected_project)
+                        st.session_state.chat_history.append((query, response))
+                    except Exception as e:
+                        st.error(f"❌ Error: {e}")
+
+            if st.session_state.get("chat_history"):
+                st.markdown("### Chat History")
+                for user_msg, bot_msg in st.session_state.chat_history:
+                    st.markdown(f'<div class="chat-container"><div class="user-bubble">{user_msg}</div></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="chat-container"><div class="bot-bubble">{bot_msg}</div></div>', unsafe_allow_html=True)
+
+
+#--------------------------------------------------------------------------PAGE: ANALYTICS--------------------------------------------------------------------------
     elif page_selection == "Analytics":
         st.title("📊 Project Analytics")
         # Generate Donut Chart for Supplier VAT Status
