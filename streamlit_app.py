@@ -479,34 +479,34 @@ if selected_project:
                     else:
                     # Process invoice
                         images = [file_data]
-                        for image_data in images:
-                                invoice_data = process_invoice(image_data)
-                                if invoice_data:
-                                    total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
-                                    invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
-                                    invoice_number = invoice_data.get("Invoice_Number")
+                    for image_data in images:
+                            invoice_data = process_invoice(image_data)
+                            if invoice_data:
+                                total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
+                                invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
+                                invoice_number = invoice_data.get("Invoice_Number")
 
-                                    # Check for missing fields
-                                    missing_fields = [key for key, value in invoice_data.items() if value in (None, "", "N/A")]
+                                # Check for missing fields
+                                missing_fields = [key for key, value in invoice_data.items() if value in (None, "", "N/A")]
 
-                                    if missing_fields:
-                                        st.session_state[f"{selected_project}_missing_data_records"].append({
-                                            "Invoice_Number": invoice_number,
-                                            "Missing Fields": ", ".join(missing_fields)
-                                        })
+                                if missing_fields:
+                                    st.session_state[f"{selected_project}_missing_data_records"].append({
+                                        "Invoice_Number": invoice_number,
+                                        "Missing Fields": ", ".join(missing_fields)
+                                    })
 
-                                    # Check if Supplier VAT is missing
-                                    supplier_vat_key = "Supplier VAT" if "Supplier VAT" in invoice_data else "Supplier_VAT"
-                                    if invoice_data.get(supplier_vat_key) in (None, "", "N/A"):
-                                        st.session_state[f"{selected_project}_supplier_vat_missing_count"] += 1
+                                # Check if Supplier VAT is missing
+                                supplier_vat_key = "Supplier VAT" if "Supplier VAT" in invoice_data else "Supplier_VAT"
+                                if invoice_data.get(supplier_vat_key) in (None, "", "N/A"):
+                                    st.session_state[f"{selected_project}_supplier_vat_missing_count"] += 1
 
-                                    if invoice_number in existing_invoices:
-                                        repeated_invoices.append(invoice_number)
-                                    else:
-                                        invoice_data["File Name"] = uploaded_file.name  # Track file name
-                                        invoice_data["Project"] = selected_project
-                                        new_invoices.append(invoice_data)
-                                        existing_invoices.add(invoice_number)  # Update existing invoices set
+                                if invoice_number in existing_invoices:
+                                    repeated_invoices.append(invoice_number)
+                                else:
+                                    invoice_data["File Name"] = uploaded_file.name  # Track file name
+                                    invoice_data["Project"] = selected_project
+                                    new_invoices.append(invoice_data)
+                                    existing_invoices.add(invoice_number)  # Update existing invoices set
 
                 # Save new invoices
                 st.session_state.projects[selected_project].extend(new_invoices)
