@@ -421,7 +421,7 @@ def handle_query(query, project):
 st.title("AI Petty Cash Manager")
 
 # Sidebar: Add New Project
-#st.sidebar.image('JFF-LOGO-White-removebg.png',width = 100)
+st.sidebar.image('JFF-LOGO-White-removebg.png',width = 100)
 st.sidebar.header("Project Management")
 project_name = st.sidebar.text_input("Enter New Project Name")
 
