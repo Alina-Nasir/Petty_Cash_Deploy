@@ -270,14 +270,14 @@ def process_invoice(image_data):
 #--------------------------------------------------------------------------CHATBOT INTEGRATION--------------------------------------------------------------------------
 from datetime import datetime
 from dateutil import parser
-import groq
-from langchain_groq import ChatGroq
-GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
-groq_client = groq.Groq(api_key = GROQ_API_KEY)
-groq_llm = ChatGroq(
-    model = "llama-3.1-8b-instant",
-    temperature = 0.2,
-)
+# import groq
+# from langchain_groq import ChatGroq
+# GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+# groq_client = groq.Groq(api_key = GROQ_API_KEY)
+# groq_llm = ChatGroq(
+#     model = "llama-3.1-8b-instant",
+#     temperature = 0.2,
+# )
 
 
 def get_filtered_invoices(query):
@@ -348,7 +348,7 @@ def extract_quarter(query):
     return None, None
 
 
-def llm_output(invoices, query, llm=groq_llm):
+def llm_output(invoices, query, llm):
     data = ""
     for invoice in invoices[0:len(invoices)]:
         line_items = invoice.get('Line_Items', [])
@@ -462,68 +462,60 @@ if selected_project:
         pdf_type = st.radio("Is your PDF file:", ["One Invoice (Multiple Pages)", "Multiple Single-Page Invoices"])
         if st.button("Process Invoices"):
             if uploaded_files:
-                existing_invoices = {inv["Invoice_Number"] for inv in invoice_collection.find({"Project": selected_project})}  # Track existing invoice numbers
+                existing_invoices = {
+                    inv.get("Invoice_Number")
+                    for inv in st.session_state.projects.get(selected_project, [])
+                }
+
                 new_invoices = []
                 repeated_invoices = []
 
                 for uploaded_file in uploaded_files:
-                    # Read file as binary
                     file_data = uploaded_file.read()
+
                     if uploaded_file.type == "application/pdf":
                         split_invoices = (pdf_type == "Multiple Single-Page Invoices")
                         images = extract_images_from_pdf(file_data)
+
                         if not split_invoices:
-                            # If it's a single invoice spanning multiple pages, merge images
-                            merged_invoice_image = merge_images_vertically(images)
-                            images = [merged_invoice_image]
+                            images = [merge_images_vertically(images)]
                     else:
-                    # Process invoice
                         images = [file_data]
+
                     for image_data in images:
-                            invoice_data = process_invoice(image_data)
-                            if invoice_data:
-                                total_amount_key = "Total Amount After VAT" if "Total Amount After VAT" in invoice_data else "Total_Amount_After_VAT"
-                                invoice_data["Total_Amount"] = invoice_data.pop(total_amount_key, None)
-                                invoice_number = invoice_data.get("Invoice_Number")
+                        invoice_data = process_invoice(image_data)
 
-                                # Check for missing fields
-                                missing_fields = [key for key, value in invoice_data.items() if value in (None, "", "N/A")]
+                        if not invoice_data:
+                            continue
 
-                                if missing_fields:
-                                    st.session_state[f"{selected_project}_missing_data_records"].append({
-                                        "Invoice_Number": invoice_number,
-                                        "Missing Fields": ", ".join(missing_fields)
-                                    })
+                        invoice_number = invoice_data.get("Invoice_Number")
 
-                                # Check if Supplier VAT is missing
-                                supplier_vat_key = "Supplier VAT" if "Supplier VAT" in invoice_data else "Supplier_VAT"
-                                if invoice_data.get(supplier_vat_key) in (None, "", "N/A"):
-                                    st.session_state[f"{selected_project}_supplier_vat_missing_count"] += 1
+                        if invoice_number in existing_invoices:
+                            repeated_invoices.append(invoice_number)
+                            continue
 
-                                if invoice_number in existing_invoices:
-                                    repeated_invoices.append(invoice_number)
-                                else:
-                                    invoice_data["File Name"] = uploaded_file.name  # Track file name
-                                    invoice_data["Project"] = selected_project
-                                    new_invoices.append(invoice_data)
-                                    existing_invoices.add(invoice_number)  # Update existing invoices set
+                        invoice_data["File Name"] = uploaded_file.name
+                        invoice_data["Project"] = selected_project
 
-                # Save new invoices
+                        new_invoices.append(invoice_data)
+                        existing_invoices.add(invoice_number)
+
+                # Save to session only
                 st.session_state.projects[selected_project].extend(new_invoices)
 
-                # Success message
                 if new_invoices:
-                    invoice_collection.insert_many(new_invoices)
-                    st.success(f"Processed {len(new_invoices)} new invoice(s) successfully!")
+                    st.success(f"Processed {len(new_invoices)} invoice(s) successfully!")
 
-                # Warning for duplicates
                 if repeated_invoices:
-                    st.warning(f"Skipped {len(repeated_invoices)} repeated invoice(s): {', '.join(repeated_invoices)}")
+                    st.warning(
+                        f"Skipped {len(repeated_invoices)} duplicate invoice(s): "
+                        f"{', '.join(repeated_invoices)}"
+                    )
 
         # Display Invoices in a Table
         if selected_project:
             missing_data_records = []
-            invoices = list(invoice_collection.find({"Project": selected_project}))
+            invoices = st.session_state.projects.get(selected_project, [])
             if invoices:
                 # Convert to DataFrame
                 df = pd.DataFrame(invoices)
@@ -571,20 +563,20 @@ if selected_project:
                             st.dataframe(line_items_df, use_container_width=True)
 
                 # Display total amounts
-                total_amount = df["Total_Amount"].sum()
-                total_vat = df["VAT_Amount"].sum()
+                # total_amount = df["Total_Amount"].sum()
+                # total_vat = df["VAT_Amount"].sum()
 
-                st.markdown(f"### **Total Amount: {total_amount:,.2f}**")
-                st.markdown(f"### **Total VAT: {total_vat:,.2f}**")
+                # st.markdown(f"### **Total Amount: {total_amount:,.2f}**")
+                # st.markdown(f"### **Total VAT: {total_vat:,.2f}**")
 
             else:
                 st.warning("No invoices found for this project.")
 
             # Display Missing Data Table
-            if missing_data_records:
-                st.markdown("### **Invoices with Missing Data**")
-                missing_df = pd.DataFrame(missing_data_records)
-                st.dataframe(missing_df)
+            # if missing_data_records:
+            #     st.markdown("### **Invoices with Missing Data**")
+            #     missing_df = pd.DataFrame(missing_data_records)
+            #     st.dataframe(missing_df)
 
 
 #--------------------------------------------------------------------------CHATBOT FUNCTIONALITY--------------------------------------------------------------------------
@@ -654,7 +646,7 @@ if selected_project:
 
         # Using Streamlit's iframe component
         st.components.v1.iframe(zoho_dashboard_url, width=800, height=600)
-        invoices = list(invoice_collection.find({"Project": selected_project}))
+        invoices = st.session_state.projects.get(selected_project, [])
         total_invoices = len(invoices)  # Total invoices in the project
 
         if total_invoices > 0:
