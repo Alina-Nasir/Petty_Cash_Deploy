@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+import google.generativeai as genai
 import pandas as pd
 import base64
 import cv2
@@ -15,12 +15,13 @@ from pymongo import MongoClient
 
 
 #--------------------------------------------------------------------------API KEY INITIALIZATIONS--------------------------------------------------------------------------
-# OpenAI API Key
-OPENAI_API_KEY = st.secrets["API_KEY"]
-client = openai.OpenAI(api_key=OPENAI_API_KEY)
+# Gemini API Key
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=GEMINI_API_KEY)
+gemini_model = genai.GenerativeModel("gemini-2.5-flash")
 MONGO_URI = st.secrets["MONGO_URI"]  # Store this in Streamlit Secrets
 mongo_client = MongoClient(MONGO_URI)
-db = mongo_client["PettyCash"]  # Connect to the database
+db = mongo_client["officeflow-invoice-petty"]  # Connect to the database
 invoice_collection = db["Invoice"]
 projects_coll = db["Project"]
 
@@ -118,60 +119,51 @@ def merge_images_vertically(image_list):
 
 #-----------------------------------------------------------------------INVOICE PROCESSING USING OPENAI-----------------------------------------------------------------------
 def process_invoice(image_data):
-    """Extract structured data from an invoice image using GPT-4o and ensure consistent key formatting."""
+    """Extract structured data from an invoice image using Gemini 2.5 Flash and ensure consistent key formatting."""
     # try:
-    base64_image = base64.b64encode(image_data).decode("utf-8")
+    image = Image.open(io.BytesIO(image_data))
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system","content": (
-                "You are an AI specialized in extracting structured data from invoices."
-                "The invoice may contain text in English or Arabic, or both."
-                "The supplier name is company that issued invoice."
-                "Your response must always be a valid JSON object, formatted exactly as follows:"
-                "\n```json\n"
-                "{"
-                "\n  \"Invoice Number\": \"<string>\","
-                "\n  \"Invoice Date\": \"<string>\","
-                "\n  \"Supplier Name\": \"<string>\","
-                "\n  \"Supplier VAT\": \"<string>\","
-                "\n  \"Customer Name\": \"<string>\","
-                "\n  \"Customer VAT\": \"<string>\","
-                "\n  \"Amount Before VAT\": <float>,"
-                "\n  \"VAT Amount\": <float>,"
-                "\n  \"Total Amount After VAT\": <float>,"
-                "\n  \"QR Code Present\": <boolean>,"
-                "\n  \"Line Items\": ["
-                "\n    {"
-                "\n      \"Item Name\": \"<string>\","
-                "\n      \"Item Description\": \"<string>\","
-                "\n      \"Quantity\": <int>,"
-                "\n      \"Unit Price\": <float>,"
-                "\n      \"Total Price\": <float>"
-                "\n    }"
-                "\n  ]"
-                "\n}"
-                "\n```"
-                "\nEnsure the JSON structure remains consistent and does not wrap data in extra keys like 'Invoice'.")},
-            {"role": "user", "content": [
-                {"type": "text", "text": (
-                    "Extract the following details from this invoice and return them in JSON format:\n"
-                    "- Invoice Number\n- Invoice Date\n- Supplier Name\n- Supplier VAT\n"
-                    "- Customer Name\n- Customer VAT\n"
-                    "- Amount Before VAT\n- VAT Amount\n- Total Amount After VAT\n"
-                    "- QR Code Present\n"
-                    "Additionally, extract line items listed in the invoice. Each line item should include:\n"
-                    "- Item Name\n- Item Description (if available)\n- Quantity\n- Unit Price\n- Total Price\n"
-                )},
-                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{base64_image}"}}
-            ]}
-        ],
-        max_tokens=800
+    prompt = (
+        "You are an AI specialized in extracting structured data from invoices. "
+        "The invoice may contain text in English or Arabic, or both. "
+        "The supplier name is the company that issued the invoice. "
+        "Your response must always be a valid JSON object, formatted exactly as follows:\n"
+        "```json\n"
+        "{\n"
+        "  \"Invoice Number\": \"<string>\",\n"
+        "  \"Invoice Date\": \"<string>\",\n"
+        "  \"Supplier Name\": \"<string>\",\n"
+        "  \"Supplier VAT\": \"<string>\",\n"
+        "  \"Customer Name\": \"<string>\",\n"
+        "  \"Customer VAT\": \"<string>\",\n"
+        "  \"Amount Before VAT\": <float>,\n"
+        "  \"VAT Amount\": <float>,\n"
+        "  \"Total Amount After VAT\": <float>,\n"
+        "  \"QR Code Present\": <boolean>,\n"
+        "  \"Line Items\": [\n"
+        "    {\n"
+        "      \"Item Name\": \"<string>\",\n"
+        "      \"Item Description\": \"<string>\",\n"
+        "      \"Quantity\": <int>,\n"
+        "      \"Unit Price\": <float>,\n"
+        "      \"Total Price\": <float>\n"
+        "    }\n"
+        "  ]\n"
+        "}\n"
+        "```\n"
+        "Ensure the JSON structure remains consistent and does not wrap data in extra keys like 'Invoice'.\n"
+        "Extract the following details from this invoice:\n"
+        "- Invoice Number\n- Invoice Date\n- Supplier Name\n- Supplier VAT\n"
+        "- Customer Name\n- Customer VAT\n"
+        "- Amount Before VAT\n- VAT Amount\n- Total Amount After VAT\n"
+        "- QR Code Present\n"
+        "Also extract all line items with: Item Name, Item Description, Quantity, Unit Price, Total Price."
     )
 
+    response = gemini_model.generate_content([prompt, image])
+
     # Extract and clean response
-    response_text = response.choices[0].message.content.strip()
+    response_text = response.text.strip()
     print(response_text)
     # Remove the backticks and "json" label
     match = re.search(r"```json\s*(\{.*?\})\s*```", response_text, re.DOTALL)
@@ -348,12 +340,11 @@ def extract_quarter(query):
     return None, None
 
 
-def llm_output(invoices, query, llm):
+def llm_output(invoices, query):
     data = ""
-    for invoice in invoices[0:len(invoices)]:
+    for invoice in invoices:
         line_items = invoice.get('Line_Items', [])
         if not isinstance(line_items, list):
-            # Handle if someone accidentally stored a bool or dict in the DB
             line_items = []
 
         try:
@@ -376,22 +367,17 @@ def llm_output(invoices, query, llm):
               Items: {item_names}\n
         """
 
-    messages = [
-        {
-            'role': 'system', 'content': "You are an invoice data assistant that returns answers to the users queries in a structured manner, you are thorough and accurate"
-        },
-        {
-            'role': 'user', 'content': f"""
-                User question: {query}
-                Here is the invoice data: {data}
-                Now provide a concise summary...
-            """
-        }
-    ]
+    prompt = (
+        "You are an invoice data assistant that returns answers to the users queries "
+        "in a structured manner, you are thorough and accurate.\n\n"
+        f"User question: {query}\n"
+        f"Here is the invoice data:\n{data}\n"
+        "Now provide a concise summary."
+    )
 
     try:
-        response = llm.invoke(messages)
-        return response.content.strip()
+        response = gemini_model.generate_content(prompt)
+        return response.text.strip()
     except Exception as e:
         return f"LLM Error: {e}"
 
