@@ -201,3 +201,408 @@ DECODED TLV :
   Invoice Date   : 542
   Total Amt+VAT  : 542.22
   VAT Amount     : 70.71
+
+============================================================
+Scanned at: 2026-06-07 12:12:49
+Image size : 1653x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+DECODE ERROR: string argument should contain only ASCII characters
+
+============================================================
+Scanned at: 2026-06-07 12:13:19
+Image size : 1537x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 12:14:05
+Image size : 1653x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 12:21:56
+Image size : 1653x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+DECODE ERROR: string argument should contain only ASCII characters
+
+============================================================
+Scanned at: 2026-06-07 12:22:50
+Image size : 1537x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 12:42:40
+Image size : 1537x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 12:53:04
+Image size : 1537x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 12:54:26
+Image size : 1653x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+DECODE ERROR: string argument should contain only ASCII characters
+
+============================================================
+Scanned at: 2026-06-07 13:22:32
+Image size : 2084x7017 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 14:55:35
+Image size : 2084x7017 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 15:29:16
+Image size : 1653x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+DECODE ERROR: string argument should contain only ASCII characters
+
+============================================================
+Scanned at: 2026-06-07 15:35:55
+Image size : 1653x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+DECODE ERROR: string argument should contain only ASCII characters
+
+============================================================
+Scanned at: 2026-06-07 15:38:24
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 15:38:48
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 15:49:14
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 15:49:33
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 15:53:59
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 15:54:15
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:03:27
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:03:50
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:09:44
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:09:56
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:12:14
+Image size : 1654x11700 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+
+============================================================
+Scanned at: 2026-06-07 16:13:20
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+Scanned at: 2026-06-07 16:13:36
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+
+============================================================
+Scanned at: 2026-06-07 16:13:52
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+
+============================================================
+Scanned at: 2026-06-07 16:14:04
+Image size : 1654x2340 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:14:17
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+
+============================================================
+Scanned at: 2026-06-07 16:19:31
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+Scanned at: 2026-06-07 16:19:46
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+
+============================================================
+Scanned at: 2026-06-07 16:19:58
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+
+============================================================
+Scanned at: 2026-06-07 16:20:10
+Image size : 1654x2340 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu threshold] → not found
+  Tried [adaptive threshold] → not found
+  Tried [upscale+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-07 16:20:26
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
