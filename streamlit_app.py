@@ -76,7 +76,10 @@ RASTER_DPI = 200
 #   aliases -> spellings the LLM might return, used when reading the value back
 PREDEFINED_FIELDS = [
     {"label": "Invoice Number", "key": "Invoice_Number", "type": "string",
-     "aliases": ["Invoice Number", "Invoice_Number", "InvoiceNumber", "Invoice No", "Invoice No."]},
+     "aliases": ["Invoice Number", "Invoice_Number", "InvoiceNumber", "Invoice No", "Invoice No.",
+                 "رقم الفاتورة", "رقم الفاتوره", "No.", "Ref", "Ref No", "Reference No",
+                 "Receipt No", "Receipt Number", "Voucher No", "Doc No", "Document No",
+                 "Cash No", "Invoice", "Folio No", "Bill No", "Transaction No"]},
     {"label": "Invoice Date", "key": "Invoice_Date", "type": "string",
      "aliases": ["Invoice Date", "Invoice_Date", "InvoiceDate", "Date"]},
     {"label": "Supplier Name", "key": "Supplier_Name", "type": "string",
@@ -247,6 +250,11 @@ LINE ITEMS — DETAILED RULES (read carefully before extracting):
         "NEVER transliterate: do not convert Arabic to Latin letters (e.g. do NOT write 'Ash\\'al Amma' for اشعال عامة). "
         "Do not translate. Do not mix scripts within a single field value unless the invoice itself does so.\n\n"
         "GENERAL FIELD RULES:\n"
+        "- Invoice Number = the unique identifier for this specific invoice/receipt/transaction. "
+        "It may be labelled: Invoice No, رقم الفاتورة, Receipt No, Ref, Cash No, Folio No, Bill No, Doc No, No., or similar. "
+        "It may also appear as a value alongside the invoice type label (e.g. 'cash 9290' or 'Tax Invoice 1924') — "
+        "in that case the number portion (e.g. '9290', '1924', or the full string 'cash 9290') IS the invoice number. "
+        "Do not leave this empty if any reference number or document identifier appears anywhere on the invoice.\n"
         "- Supplier Name = the company/entity that ISSUED the invoice (the seller).\n"
         "- Customer Name = the entity (person OR company) that is BUYING / being BILLED. "
         "Step 1 — find the field explicitly labelled as the customer/buyer: "
@@ -529,18 +537,53 @@ def extract_qr_code(image_data):
 
     gray = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
 
+    # Pre-built reusable intermediates
+    up2  = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+    up3  = cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    up4  = cv2.resize(gray, None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC)
+
+    # Sharpen kernel — helps blurry / low-res QR codes
+    sharpen_k = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+    sharpened   = cv2.filter2D(gray, -1, sharpen_k)
+    sharp_up2   = cv2.filter2D(up2,  -1, sharpen_k)
+    sharp_up3   = cv2.filter2D(up3,  -1, sharpen_k)
+
+    # CLAHE — improves contrast on faded/washed-out prints
+    clahe       = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+    clahe_gray  = clahe.apply(gray)
+    clahe_up2   = clahe.apply(up2)
+
+    def otsu(img):
+        return cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+    def adaptive(img, block=11, c=2):
+        return cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                     cv2.THRESH_BINARY, block, c)
+
     # Build a list of image variants to try, from cheapest to most aggressive
     variants = [
-        ("original colour",    original),
-        ("grayscale",          gray),
-        ("upscaled 2x",        cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)),
-        ("upscaled 3x",        cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)),
-        ("otsu threshold",     cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]),
-        ("adaptive threshold", cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-                                                     cv2.THRESH_BINARY, 11, 2)),
-        ("upscale+otsu",       cv2.threshold(
-                                   cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC),
-                                   0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]),
+        ("original colour",        original),
+        ("grayscale",              gray),
+        ("upscaled 2x",            up2),
+        ("upscaled 3x",            up3),
+        ("upscaled 4x",            up4),
+        ("otsu",                   otsu(gray)),
+        ("adaptive 11",            adaptive(gray, 11, 2)),
+        ("adaptive 15",            adaptive(gray, 15, 4)),
+        ("sharpened",              sharpened),
+        ("sharpened+otsu",         otsu(sharpened)),
+        ("sharp+up2",              sharp_up2),
+        ("sharp+up2+otsu",         otsu(sharp_up2)),
+        ("sharp+up3",              sharp_up3),
+        ("sharp+up3+otsu",         otsu(sharp_up3)),
+        ("clahe",                  clahe_gray),
+        ("clahe+otsu",             otsu(clahe_gray)),
+        ("clahe+up2",              clahe_up2),
+        ("clahe+up2+otsu",         otsu(clahe_up2)),
+        ("up2+adaptive",           adaptive(up2, 11, 2)),
+        ("up3+otsu",               otsu(up3)),
+        ("up3+adaptive",           adaptive(up3, 15, 4)),
+        ("up4+otsu",               otsu(up4)),
     ]
 
     for name, img in variants:
