@@ -12,6 +12,7 @@ import json
 import fitz  # PyMuPDF for PDF processing
 import plotly.express as px  # Import Plotly for visualization
 from pymongo import MongoClient
+from difflib import SequenceMatcher  # For semantic-ish matching of field names
 
 
 #--------------------------------------------------------------------------API KEY INITIALIZATIONS--------------------------------------------------------------------------
@@ -30,50 +31,281 @@ if "projects" not in st.session_state:
     st.session_state.projects = {}  # Dictionary to store project data
 
 
-#--------------------------------------------------------------------------IMAGE DATA EXTRACTION--------------------------------------------------------------------------
-# Function to check if a QR code is present in the image
-def extract_qr_code(image_data):
-    """Detects and extracts QR code content from the image."""
-    nparr = np.frombuffer(image_data, np.uint8)
-    image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    qr_codes = decode(image)
+#--------------------------------------------------------------------------DYNAMIC FIELD CONFIGURATION--------------------------------------------------------------------------
+# Each predefined field has:
+#   label   -> how it is shown to the user / asked from the LLM
+#   key     -> the canonical snake_case key we store it under (keeps old code working)
+#   type    -> string / float / bool / line_items (controls the JSON schema hint)
+#   aliases -> spellings the LLM might return, used when reading the value back
+PREDEFINED_FIELDS = [
+    {"label": "Invoice Number", "key": "Invoice_Number", "type": "string",
+     "aliases": ["Invoice Number", "Invoice_Number", "InvoiceNumber", "Invoice No", "Invoice No."]},
+    {"label": "Invoice Date", "key": "Invoice_Date", "type": "string",
+     "aliases": ["Invoice Date", "Invoice_Date", "InvoiceDate", "Date"]},
+    {"label": "Supplier Name", "key": "Supplier_Name", "type": "string",
+     "aliases": ["Supplier Name", "Supplier_Name", "SupplierName"]},
+    {"label": "Supplier VAT", "key": "Supplier_VAT", "type": "string",
+     "aliases": ["Supplier VAT", "Supplier_VAT", "SupplierVAT"]},
+    {"label": "Customer Name", "key": "Customer_Name", "type": "string",
+     "aliases": ["Customer Name", "Customer_Name", "CustomerName",
+                 "Guest Name", "Guest", "Passenger Name", "Passenger",
+                 "Employee Name", "Employee", "Purchaser", "Buyer",
+                 "Client Name", "Client", "Payee", "Attn", "Contact Person",
+                 "Recipient", "Cardholder", "Name"]},
+    {"label": "Customer VAT", "key": "Customer_VAT", "type": "string",
+     "aliases": ["Customer VAT", "Customer_VAT", "CustomerVAT"]},
+    {"label": "Amount Before VAT", "key": "Amount_Before_VAT", "type": "float",
+     "aliases": ["Amount Before VAT", "Amount_Before_VAT", "AmountBeforeVAT"]},
+    {"label": "VAT Amount", "key": "VAT_Amount", "type": "float",
+     "aliases": ["VAT Amount", "VAT_Amount", "VATAmount"]},
+    {"label": "Total Amount After VAT", "key": "Total_Amount_After_VAT", "type": "float",
+     "aliases": ["Total Amount After VAT", "Total_Amount_After_VAT", "TotalAmountAfterVAT"]},
+    {"label": "QR Code Present", "key": "QR_Code_Present", "type": "bool",
+     "aliases": ["QR Code Present", "QR_Code_Present", "QRCodePresent"]},
+    {"label": "Line Items", "key": "Line_Items", "type": "line_items",
+     "aliases": ["Line Items", "Line_Items", "LineItems"]},
+]
 
-    # If QR codes are found, extract the first one
-    if qr_codes:
-        return qr_codes[0].data.decode("utf-8")  # Decoding QR content to string
-    
-    return None  # No QR code found
+
+def normalize_key(key):
+    """Lowercase a key and strip everything except letters/digits so that
+    'Invoice Number', 'invoice_number' and 'InvoiceNumber' all compare equal."""
+    return re.sub(r"[^a-z0-9]", "", str(key).lower())
+
+
+def find_value(invoice_data, candidates, default=None):
+    """Read a value out of the LLM's JSON, tolerating wording differences.
+
+    1. Exact match on any of the candidate spellings (after normalizing).
+    2. Fuzzy fallback (e.g. 'Invoice No' vs 'Invoice Number') above a threshold.
+    """
+    norm_map = {normalize_key(k): k for k in invoice_data.keys()}
+
+    # 1) exact (normalized) match against every accepted spelling
+    for cand in candidates:
+        nk = normalize_key(cand)
+        if nk in norm_map:
+            return invoice_data[norm_map[nk]]
+
+    # 2) fuzzy fallback against the primary (first) candidate
+    primary = normalize_key(candidates[0])
+    best_key, best_ratio = None, 0.0
+    for nk, original in norm_map.items():
+        ratio = SequenceMatcher(None, primary, nk).ratio()
+        if ratio > best_ratio:
+            best_ratio, best_key = ratio, original
+    if best_key and best_ratio >= 0.82:
+        return invoice_data[best_key]
+
+    return default
+
+
+def build_invoice_prompt(selected_fields, custom_fields):
+    """Build the Gemini prompt dynamically from the user's chosen fields.
+
+    selected_fields -> list of PREDEFINED_FIELDS dicts the user ticked
+    custom_fields   -> list of extra field-name strings the user typed
+    """
+    schema_lines = []
+    bullet_lines = []
+
+    for field in selected_fields:
+        if field["type"] == "line_items":
+            schema_lines.append(
+                '  "Line Items": [\n'
+                '    {\n'
+                '      "Item Name": "<string>",\n'
+                '      "Item Description": "<string>",\n'
+                '      "Quantity": <int>,\n'
+                '      "Unit Price": <float>,\n'
+                '      "Total Price": <float>\n'
+                '    }\n'
+                '  ]'
+            )
+            bullet_lines.append("- Line Items (Item Name, Item Description, Quantity, Unit Price, Total Price)")
+        elif field["type"] == "float":
+            schema_lines.append(f'  "{field["label"]}": <float>')
+            bullet_lines.append(f"- {field['label']}")
+        elif field["type"] == "bool":
+            schema_lines.append(f'  "{field["label"]}": <boolean>')
+            bullet_lines.append(f"- {field['label']}")
+        else:
+            schema_lines.append(f'  "{field["label"]}": "<string>"')
+            bullet_lines.append(f"- {field['label']}")
+
+    # Custom user-defined fields (default to string, value as it appears on the invoice)
+    for cf in custom_fields:
+        schema_lines.append(f'  "{cf}": "<string>"')
+        bullet_lines.append(f"- {cf}")
+
+    schema = "{\n" + ",\n".join(schema_lines) + "\n}"
+
+    has_line_items = any(f["type"] == "line_items" for f in selected_fields)
+
+    line_items_instruction = (
+        "\n\nIMPORTANT for Line Items: "
+        "You MUST extract EVERY SINGLE row from the invoice table — do not skip any. "
+        "Count the rows yourself before responding and make sure the array length matches. "
+        "Include tax rows, service charge rows, and fee rows as separate line items too."
+        if has_line_items else ""
+    )
+
+    prompt = (
+        "You are an AI specialized in extracting structured data from invoices. "
+        "The invoice may contain text in English or Arabic, or both. "
+        "The supplier name is the company that issued the invoice. "
+        "Your response must always be a valid JSON object, using EXACTLY these keys, formatted as follows:\n"
+        "```json\n"
+        f"{schema}\n"
+        "```\n"
+        "Ensure the JSON structure remains consistent and does not wrap data in extra keys like 'Invoice'. "
+        "If a value is not present on the invoice, use an empty string.\n"
+        "FIELD RULES:\n"
+        "- Customer Name = the INDIVIDUAL PERSON associated with the transaction. "
+        "Look for fields labelled: Guest Name, Guest, Employee, Passenger, Purchaser, Payee, Attn, Contact, Cardholder, Client, or any similar label that refers to a specific human being. "
+        "If a company/organisation name also appears (e.g. Bill To, Company, Employer), ignore it for this field — that is NOT the Customer Name. "
+        "If no individual person name exists anywhere on the invoice, only then fall back to the company/organisation name.\n"
+        "- Total Amount After VAT = the final grand total payable INCLUDING all taxes and charges "
+        "(labelled Total / Grand Total / Balance / Amount Due). It must be greater than or equal to 'Amount Before VAT'. "
+        "Do not confuse it with a subtotal, a single line item, or the VAT amount.\n"
+        "Extract the following details from this invoice:\n"
+        + "\n".join(bullet_lines)
+        + line_items_instruction
+    )
+    print(prompt)
+    return prompt
+
+
+#--------------------------------------------------------------------------IMAGE DATA EXTRACTION--------------------------------------------------------------------------
+import os
+from datetime import datetime
+
+QR_DEBUG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qrcode_out.txt")
+
+def _qr_log(text):
+    with open(QR_DEBUG_FILE, "a", encoding="utf-8") as f:
+        f.write(text + "\n")
+
+def extract_qr_code(image_data):
+    """Detects and extracts QR code content from the image.
+    Tries multiple preprocessed versions so low-res / compressed images still work.
+    """
+    nparr = np.frombuffer(image_data, np.uint8)
+    original = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+    _qr_log("")
+    _qr_log("=" * 60)
+    _qr_log(f"Scanned at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    _qr_log(f"Image size : {original.shape[1]}x{original.shape[0]} px")
+
+    gray = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
+
+    # Build a list of image variants to try, from cheapest to most aggressive
+    variants = [
+        ("original colour",    original),
+        ("grayscale",          gray),
+        ("upscaled 2x",        cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)),
+        ("upscaled 3x",        cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)),
+        ("otsu threshold",     cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]),
+        ("adaptive threshold", cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                                     cv2.THRESH_BINARY, 11, 2)),
+        ("upscale+otsu",       cv2.threshold(
+                                   cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC),
+                                   0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]),
+    ]
+
+    for name, img in variants:
+        qr_codes = decode(img)
+        _qr_log(f"  Tried [{name}] → {'FOUND' if qr_codes else 'not found'}")
+        if qr_codes:
+            raw = qr_codes[0].data.decode("utf-8")
+            _qr_log(f"STATUS      : FOUND (via {name})")
+            _qr_log(f"RAW BASE64  : {raw}")
+            return raw
+
+    _qr_log("STATUS      : NOT FOUND — all preprocessing variants failed.")
+    return None
+
+def _scan_tlv_string(qr_bytes, target_tag):
+    """Scan the byte stream for a ZATCA tag and return its value as a clean string.
+    Scanning (rather than strict sequential parsing) survives QRs with a
+    corrupt/garbled field that would otherwise knock the parser out of alignment.
+    """
+    n = len(qr_bytes)
+    i = 0
+    while i < n - 1:
+        tag = qr_bytes[i]
+        length = qr_bytes[i + 1]
+        if tag == target_tag and 0 < length <= 60 and i + 2 + length <= n:
+            chunk = qr_bytes[i + 2 : i + 2 + length]
+            try:
+                return chunk.decode("utf-8")
+            except UnicodeDecodeError:
+                pass
+        i += 1
+    return None
+
+
+def _scan_tlv_amount(qr_bytes, target_tag):
+    """Scan for a tag whose value is a plain decimal number (totals / VAT amount).
+    The strict numeric check makes a false match extremely unlikely."""
+    n = len(qr_bytes)
+    i = 0
+    while i < n - 1:
+        tag = qr_bytes[i]
+        length = qr_bytes[i + 1]
+        if tag == target_tag and 0 < length <= 20 and i + 2 + length <= n:
+            chunk = qr_bytes[i + 2 : i + 2 + length]
+            try:
+                s = chunk.decode("ascii")
+                if re.fullmatch(r"\d+(\.\d+)?", s):
+                    return float(s)
+            except (UnicodeDecodeError, ValueError):
+                pass
+        i += 1
+    return None
+
 
 def decode_tlv_qr(qr_string):
     """
-    Decodes the extracted QR code data (Base64-encoded TLV format) 
-    used in E-Invoice QR Reader KSA.
+    Decodes the extracted QR code data (Base64-encoded TLV format)
+    used in E-Invoice QR Reader KSA. Robust against malformed timestamp fields.
     """
     try:
         qr_bytes = base64.b64decode(qr_string)
-        fields = []
-        i = 0
-        def to_float(value):
-            try:
-                return float(value) if value else None
-            except ValueError:
-                return None  # If conversion fails, return None instead of crashing
-        
-        while i < len(qr_bytes):
-            tag = qr_bytes[i]
-            length = qr_bytes[i + 1]
-            value = qr_bytes[i + 2 : i + 2 + length].decode('utf-8')
-            fields.append(value)
-            i += 2 + length
 
-        return {
-            "Supplier_Name": fields[0] if len(fields) > 0 else None,
-            "Supplier_VAT": fields[1] if len(fields) > 1 else None,
-            "Invoice_Date": fields[2] if len(fields) > 2 else None,
-            "Total_Amount_After_VAT": to_float(fields[3]) if len(fields) > 3 else None,
-            "VAT_Amount": to_float(fields[4]) if len(fields) > 4 else None
+        # tag 1 = seller name, 2 = VAT, 3 = timestamp, 4 = total (with VAT), 5 = VAT amount
+        supplier_name = _scan_tlv_string(qr_bytes, 1)
+        supplier_vat  = _scan_tlv_string(qr_bytes, 2)
+        invoice_date  = _scan_tlv_string(qr_bytes, 3)
+        total_amount  = _scan_tlv_amount(qr_bytes, 4)
+        vat_amount    = _scan_tlv_amount(qr_bytes, 5)
+
+        # Strip any leftover non-printable bytes from string fields
+        def clean(s):
+            if s is None:
+                return None
+            return re.sub(r"[^\x20-\x7E؀-ۿ]", "", s) or None
+
+        result = {
+            "Supplier_Name":          clean(supplier_name),
+            "Supplier_VAT":           clean(supplier_vat),
+            "Invoice_Date":           clean(invoice_date),
+            "Total_Amount_After_VAT": total_amount,
+            "VAT_Amount":             vat_amount,
         }
+
+        _qr_log("DECODED TLV :")
+        _qr_log(f"  Supplier Name  : {result['Supplier_Name']}")
+        _qr_log(f"  Supplier VAT   : {result['Supplier_VAT']}")
+        _qr_log(f"  Invoice Date   : {result['Invoice_Date']}")
+        _qr_log(f"  Total Amt+VAT  : {result['Total_Amount_After_VAT']}")
+        _qr_log(f"  VAT Amount     : {result['VAT_Amount']}")
+
+        return result
+
     except Exception as e:
+        _qr_log(f"DECODE ERROR: {e}")
         return {"Error": str(e)}
 
 def extract_images_from_pdf(pdf_data):
@@ -118,47 +350,25 @@ def merge_images_vertically(image_list):
 
 
 #-----------------------------------------------------------------------INVOICE PROCESSING USING OPENAI-----------------------------------------------------------------------
-def process_invoice(image_data):
-    """Extract structured data from an invoice image using Gemini 2.5 Flash and ensure consistent key formatting."""
+def process_invoice(image_data, selected_fields=None, custom_fields=None):
+    """Extract structured data from an invoice image using Gemini 2.5 Flash.
+
+    selected_fields -> list of PREDEFINED_FIELDS dicts the user chose to extract.
+                       Defaults to ALL predefined fields (= original behaviour).
+    custom_fields   -> list of extra field names the user typed in the UI.
+    """
+    # Default to every predefined field so old behaviour is preserved when
+    # the caller passes nothing.
+    if selected_fields is None:
+        selected_fields = PREDEFINED_FIELDS
+    if custom_fields is None:
+        custom_fields = []
+
     # try:
     image = Image.open(io.BytesIO(image_data))
 
-    prompt = (
-        "You are an AI specialized in extracting structured data from invoices. "
-        "The invoice may contain text in English or Arabic, or both. "
-        "The supplier name is the company that issued the invoice. "
-        "Your response must always be a valid JSON object, formatted exactly as follows:\n"
-        "```json\n"
-        "{\n"
-        "  \"Invoice Number\": \"<string>\",\n"
-        "  \"Invoice Date\": \"<string>\",\n"
-        "  \"Supplier Name\": \"<string>\",\n"
-        "  \"Supplier VAT\": \"<string>\",\n"
-        "  \"Customer Name\": \"<string>\",\n"
-        "  \"Customer VAT\": \"<string>\",\n"
-        "  \"Amount Before VAT\": <float>,\n"
-        "  \"VAT Amount\": <float>,\n"
-        "  \"Total Amount After VAT\": <float>,\n"
-        "  \"QR Code Present\": <boolean>,\n"
-        "  \"Line Items\": [\n"
-        "    {\n"
-        "      \"Item Name\": \"<string>\",\n"
-        "      \"Item Description\": \"<string>\",\n"
-        "      \"Quantity\": <int>,\n"
-        "      \"Unit Price\": <float>,\n"
-        "      \"Total Price\": <float>\n"
-        "    }\n"
-        "  ]\n"
-        "}\n"
-        "```\n"
-        "Ensure the JSON structure remains consistent and does not wrap data in extra keys like 'Invoice'.\n"
-        "Extract the following details from this invoice:\n"
-        "- Invoice Number\n- Invoice Date\n- Supplier Name\n- Supplier VAT\n"
-        "- Customer Name\n- Customer VAT\n"
-        "- Amount Before VAT\n- VAT Amount\n- Total Amount After VAT\n"
-        "- QR Code Present\n"
-        "Also extract all line items with: Item Name, Item Description, Quantity, Unit Price, Total Price."
-    )
+    # Build the prompt dynamically from the chosen fields
+    prompt = build_invoice_prompt(selected_fields, custom_fields)
 
     response = gemini_model.generate_content([prompt, image])
 
@@ -175,60 +385,56 @@ def process_invoice(image_data):
     # Convert JSON string to dictionary
     invoice_data = json.loads(cleaned_json)
 
-    def get_value(keys, default="Unknown"):
-        """Helper function to get value from multiple possible keys in invoice_data."""
-        for key in keys:
-            if key in invoice_data:
-                return invoice_data[key]
-        return default
     def safe_float(value, default=0.0):
         """Convert value to float, handling None or invalid values."""
         try:
             return float(value) if value is not None else default
-        except ValueError:
+        except (ValueError, TypeError):
             return default
 
-    # ✅ Ensure consistent keys with default values
-    new_invoice_data = {
-        "Invoice_Number": get_value(["Invoice Number", "Invoice_Number", "InvoiceNumber"]),
-        "Invoice_Date": get_value(["Invoice Date", "Invoice_Date", "InvoiceDate"]),
-        "Supplier_Name": get_value(["Supplier Name", "Supplier_Name","SupplierName"]),
-        "Supplier_VAT": get_value(["Supplier VAT", "Supplier_VAT", "SupplierVAT"]),
-        "Customer_Name": get_value(["Customer Name", "Customer_Name","CustomerName"]),
-        "Customer_VAT": get_value(["Customer VAT", "Customer_VAT","CustomerVAT"]),
-        "Amount_Before_VAT": get_value(["Amount Before VAT", "Amount_Before_VAT, AmountBeforeVAT"], "0.00"),
-        "VAT_Amount": get_value(["VAT Amount", "VAT_Amount", "VATAmount"], "0.00"),
-        "Total_Amount_After_VAT": get_value(["Total Amount After VAT", "Total_Amount_After_VAT","TotalAmountAfterVAT"], "0.00"),
-        "QR_Code_Present": get_value(["QR Code Present", "QR_Code_Present", "QRCodePresent"], False),
-        "Line_Items": []
-    }
+    # ✅ Build the stored record dynamically based on what the user selected.
+    new_invoice_data = {}
+    selected_keys = {f["key"] for f in selected_fields}
 
-    # ✅ Handle multiple variations of "Line Items"
-    line_items_keys = ["Line Items", "Line_Items","LineItems","LineItem" "Line Item", "Line_Item"]
-    line_items = next((invoice_data[key] for key in line_items_keys if key in invoice_data), [])
+    for field in selected_fields:
+        if field["type"] == "line_items":
+            # handled separately below
+            continue
+        default = "0.00" if field["type"] == "float" else (False if field["type"] == "bool" else "Unknown")
+        new_invoice_data[field["key"]] = find_value(invoice_data, field["aliases"], default)
 
-    # ✅ Process line items if they exist
-    if isinstance(line_items, list):
-        new_invoice_data["Line_Items"] = [
-            {
-                "Item_Name": next(
-                    (item[key] for key in ["Item Name", "Item_Name", "ItemName" ] if key in item), "Unknown"
-                ),
-                "Item_Description": next(
-                    (item[key] for key in ["Item Description", "Item_Description", "ItemDescription"] if key in item), ""
-                ),
-                "Quantity": safe_float(next(
-                    (item[key] for key in ["Quantity", "Qty", "QTY"] if key in item), 0
-                )),
-                "Unit_Price": safe_float(next(
-                    (item[key] for key in ["Unit Price", "Unit_Price","UnitPrice", "Price Per Unit"] if key in item), 0.0
-                )),
-                "Total_Price": safe_float(next(
-                    (item[key] for key in ["Total Price", "Total_Price", "TotalPrice","Line Total"] if key in item), 0.0
-                ))
-            }
-            for item in line_items
-        ]
+    # ✅ Line Items — only if the user asked for them
+    if "Line_Items" in selected_keys:
+        line_items = find_value(invoice_data, ["Line Items", "Line_Items", "LineItems", "Line Item", "Line_Item"], [])
+        new_invoice_data["Line_Items"] = []
+        if isinstance(line_items, list):
+            new_invoice_data["Line_Items"] = [
+                {
+                    "Item_Name": next(
+                        (item[key] for key in ["Item Name", "Item_Name", "ItemName"] if key in item), "Unknown"
+                    ),
+                    "Item_Description": next(
+                        (item[key] for key in ["Item Description", "Item_Description", "ItemDescription"] if key in item), ""
+                    ),
+                    "Quantity": safe_float(next(
+                        (item[key] for key in ["Quantity", "Qty", "QTY"] if key in item), 0
+                    )),
+                    "Unit_Price": safe_float(next(
+                        (item[key] for key in ["Unit Price", "Unit_Price", "UnitPrice", "Price Per Unit"] if key in item), 0.0
+                    )),
+                    "Total_Price": safe_float(next(
+                        (item[key] for key in ["Total Price", "Total_Price", "TotalPrice", "Line Total"] if key in item), 0.0
+                    ))
+                }
+                for item in line_items if isinstance(item, dict)
+            ]
+
+    # ✅ Custom user-defined fields — stored under their own label as the column name
+    for cf in custom_fields:
+        cf = cf.strip()
+        if cf:
+            new_invoice_data[cf] = find_value(invoice_data, [cf], "")
+
     qr_code_string = extract_qr_code(image_data)
     if qr_code_string:
         qr_data = decode_tlv_qr(qr_code_string)
@@ -240,7 +446,9 @@ def process_invoice(image_data):
         new_invoice_data['QR_Code_Valid'] = True
         for key, qr_value in qr_data.items():
             if key in new_invoice_data and qr_value:
-                if key == "Supplier_Name":
+                # Supplier_Name: Arabic vs English causes false mismatches
+                # Invoice_Date: QR stores a binary timestamp, Gemini reads the printed date correctly
+                if key in ("Supplier_Name", "Invoice_Date"):
                     continue
                 if new_invoice_data[key] != qr_value:
                     # Update other fields normally
@@ -443,11 +651,61 @@ if selected_project:
 #--------------------------------------------------------------------------PAGE: PROJECT OVERVIEW--------------------------------------------------------------------------
     if page_selection == "Project Overview":
 
+        #------------------------------------------------------------------FIELD SELECTION (DYNAMIC PROMPT)------------------------------------------------------------------
+        # 1) Additional custom fields the user wants on top of the predefined ones
+        with st.expander("⚙️ Configure fields to extract", expanded=True):
+            st.markdown("#### ➕ Additional fields")
+            st.caption("Add any field that isn't in the predefined list (e.g. `VAT %`, `Municipality Tax`, `Room No`).")
+
+            if "custom_fields" not in st.session_state:
+                st.session_state.custom_fields = [""]
+
+            # Render an input box for each custom field slot
+            for i in range(len(st.session_state.custom_fields)):
+                st.session_state.custom_fields[i] = st.text_input(
+                    f"Additional field {i + 1}",
+                    value=st.session_state.custom_fields[i],
+                    key=f"custom_field_{i}",
+                    placeholder="e.g. VAT %",
+                )
+
+            col_add, col_remove = st.columns(2)
+            with col_add:
+                if st.button("➕ Add another field", use_container_width=True):
+                    st.session_state.custom_fields.append("")
+                    st.rerun()
+            with col_remove:
+                if st.button("➖ Remove last field", use_container_width=True):
+                    if len(st.session_state.custom_fields) > 1:
+                        st.session_state.custom_fields.pop()
+                        st.rerun()
+
+            st.divider()
+
+            # 2) Checklist of predefined fields
+            st.markdown("#### ✅ Predefined fields")
+            st.caption("Tick the fields you want extracted from each invoice.")
+            selected_fields = []
+            check_cols = st.columns(3)
+            for idx, field in enumerate(PREDEFINED_FIELDS):
+                with check_cols[idx % 3]:
+                    if st.checkbox(field["label"], value=True, key=f"chk_{field['key']}"):
+                        selected_fields.append(field)
+
+        # Clean up custom fields (drop blanks / duplicates)
+        custom_fields = []
+        for cf in st.session_state.custom_fields:
+            cf = cf.strip()
+            if cf and cf not in custom_fields:
+                custom_fields.append(cf)
+
         # Upload multiple invoices
         uploaded_files = st.file_uploader("Upload Invoices (PNG, JPG, PDF)", type=["png", "jpg", "pdf"], accept_multiple_files=True)
         pdf_type = st.radio("Is your PDF file:", ["One Invoice (Multiple Pages)", "Multiple Single-Page Invoices"])
         if st.button("Process Invoices"):
-            if uploaded_files:
+            if not selected_fields and not custom_fields:
+                st.error("Please select at least one field to extract.")
+            elif uploaded_files:
                 existing_invoices = {
                     inv.get("Invoice_Number")
                     for inv in st.session_state.projects.get(selected_project, [])
@@ -469,7 +727,7 @@ if selected_project:
                         images = [file_data]
 
                     for image_data in images:
-                        invoice_data = process_invoice(image_data)
+                        invoice_data = process_invoice(image_data, selected_fields, custom_fields)
 
                         if not invoice_data:
                             continue

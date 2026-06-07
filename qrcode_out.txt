@@ -1,0 +1,203 @@
+
+============================================================
+Scanned at: 2026-06-04 16:00:50
+STATUS      : NOT FOUND — OpenCV/pyzbar found no QR code in this image.
+
+============================================================
+Scanned at: 2026-06-04 16:16:19
+STATUS      : NOT FOUND — OpenCV/pyzbar found no QR code in this image.
+
+============================================================
+Scanned at: 2026-06-04 16:27:54
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : None
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:31:11
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : None
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:33:34
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : None
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:33:52
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : None
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:40:43
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : None
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:41:03
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : None
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:52:06
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 270.71
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 16:52:18
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 270.71
+  VAT Amount     : None
+
+============================================================
+Scanned at: 2026-06-04 17:02:38
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
+
+============================================================
+Scanned at: 2026-06-07 09:20:04
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
+
+============================================================
+Scanned at: 2026-06-07 09:24:22
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
+
+============================================================
+Scanned at: 2026-06-07 09:24:40
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
+
+============================================================
+Scanned at: 2026-06-07 10:02:01
+Image size : 594x792 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
