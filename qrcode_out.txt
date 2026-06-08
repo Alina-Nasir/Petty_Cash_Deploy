@@ -912,3 +912,1915 @@ DECODED TLV :
   Invoice Date   : 2025-02-04T12:18:00Z
   Total Amt+VAT  : 207.0
   VAT Amount     : 27.0
+
+
+============================================================
+
+============================================================
+Scanned at: 2026-06-08 11:04:40
+Scanned at: 2026-06-08 11:04:40
+Image size : 1654x2340 px
+
+============================================================
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:04:40
+Image size : 1654x2340 px
+Scanned at: 2026-06-08 11:04:40
+============================================================
+Image size : 1654x2340 px
+Scanned at: 2026-06-08 11:04:40
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 835.59
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 108.99
+  VAT Amount     : 509.7
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+
+============================================================
+Scanned at: 2026-06-08 11:10:48
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 11:10:48
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 11:10:48
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:10:48
+Image size : 1656x2337 px
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [upscaled 4x] → not found
+  Tried [adaptive 15] → not found
+  Tried [otsu] → not found
+  Tried [sharpened] → not found
+  Tried [adaptive 11] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 11:11:01
+Image size : 1654x2340 px
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+
+
+============================================================
+Scanned at: 2026-06-08 11:17:12
+Image size : 1656x2337 px
+============================================================
+
+============================================================
+Scanned at: 2026-06-08 11:17:12
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 11:17:12
+Image size : 1654x2340 px
+Scanned at: 2026-06-08 11:17:12
+Image size : 1656x2337 px
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [upscaled 4x] → not found
+  Tried [adaptive 15] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [sharpened] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 11:17:23
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+
+============================================================
+Scanned at: 2026-06-08 11:18:43
+Image size : 1656x2337 px
+
+============================================================
+
+============================================================
+Scanned at: 2026-06-08 11:18:43
+
+============================================================
+Scanned at: 2026-06-08 11:18:43
+Image size : 1656x2337 px
+Scanned at: 2026-06-08 11:18:43
+Image size : 1654x2340 px
+Image size : 1656x2337 px
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+
+============================================================
+Scanned at: 2026-06-08 11:18:53
+Image size : 1654x2340 px
+  Tried [up3+otsu] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 11:18:58
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:18:58
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:18:58
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:18:58
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:18:58
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+  Tried [up3+otsu] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+
+============================================================
+Scanned at: 2026-06-08 11:25:53
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:25:53
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 11:25:53
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 11:25:53
+Image size : 1656x2337 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [upscaled 4x] → not found
+  Tried [adaptive 11] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 11] → not found
+  Tried [sharpened] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 11:26:04
+Image size : 1654x2340 px
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-08 11:26:07
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:26:07
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:26:07
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:26:07
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:26:07
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+Scanned at: 2026-06-08 11:40:12
+Image size : 1656x2337 px
+
+
+============================================================
+Scanned at: 2026-06-08 11:40:12
+Image size : 1654x2340 px
+
+============================================================
+============================================================
+Scanned at: 2026-06-08 11:40:12
+Image size : 1656x2337 px
+Scanned at: 2026-06-08 11:40:12
+Image size : 1656x2337 px
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+
+============================================================
+Scanned at: 2026-06-08 11:40:24
+Image size : 1654x2340 px
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 11:40:26
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+
+============================================================
+Scanned at: 2026-06-08 11:40:28
+Image size : 1100x1700 px
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [original colour] → not found
+  Tried [adaptive 11] → not found
+  Tried [grayscale] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [upscaled 2x] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [upscaled 3x] → not found
+  Tried [sharp+up3] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [clahe] → not found
+  Tried [adaptive 15] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-08 11:40:36
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:40:36
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:40:36
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:40:36
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:40:36
+Image size : 1654x2340 px
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+
+============================================================
+Scanned at: 2026-06-08 11:40:38
+Image size : 1653x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+
+============================================================
+Scanned at: 2026-06-08 11:40:39
+Image size : 1537x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [original colour] → not found
+
+============================================================
+Scanned at: 2026-06-08 11:40:39
+Image size : 1653x2339 px
+  Tried [grayscale] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+  Tried [original colour] → not found
+  Tried [upscaled 2x] → not found
+  Tried [grayscale] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [upscaled 4x] → not found
+  Tried [sharpened] → not found
+  Tried [otsu] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [sharp+up3] → not found
+  Tried [up3+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+DECODE ERROR: string argument should contain only ASCII characters
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+
+
+
+============================================================
+============================================================
+Scanned at: 2026-06-08 11:41:53
+Scanned at: 2026-06-08 11:41:53
+Scanned at: 2026-06-08 11:41:53
+Image size : 1656x2337 px
+Image size : 1654x2340 px
+============================================================
+Scanned at: 2026-06-08 11:41:53
+Image size : 1656x2337 px
+Image size : 1656x2337 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [upscaled 4x] → not found
+  Tried [adaptive 11] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 11] → not found
+  Tried [sharpened] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+
+============================================================
+Scanned at: 2026-06-08 11:42:05
+Image size : 1654x2340 px
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+
+============================================================
+Scanned at: 2026-06-08 11:42:07
+Image size : 1100x1700 px
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 11:42:07
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-08 11:42:15
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:42:15
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:42:15
+Image size : 1654x2340 px
+
+============================================================
+
+============================================================
+Scanned at: 2026-06-08 11:42:15
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 11:42:15
+Image size : 1654x2340 px
+Scanned at: 2026-06-08 11:42:15
+Image size : 1653x2339 px
+
+============================================================
+Scanned at: 2026-06-08 11:42:17
+Image size : 1537x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+  Tried [grayscale] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+
+============================================================
+Scanned at: 2026-06-08 11:42:21
+Image size : 1653x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [upscaled 2x] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [upscaled 3x] → not found
+  Tried [sharp+up2] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [upscaled 4x] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up3] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up3] → not found
+  Tried [up3+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [up3+adaptive] → not found
+DECODE ERROR: string argument should contain only ASCII characters
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+Scanned at: 2026-06-08 11:55:41
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+============================================================
+Scanned at: 2026-06-08 11:58:38
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+
+
+============================================================
+============================================================
+Scanned at: 2026-06-08 12:03:02
+Image size : 1656x2337 px
+Scanned at: 2026-06-08 12:03:02
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 12:03:03
+
+Image size : 1656x2337 px
+============================================================
+Scanned at: 2026-06-08 12:03:03
+Image size : 1654x2340 px
+  Tried [original colour] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [upscaled 4x] → not found
+  Tried [sharpened] → not found
+  Tried [otsu] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [up2+adaptive] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+
+============================================================
+Scanned at: 2026-06-08 12:03:14
+Image size : 1654x2340 px
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 12:03:16
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+
+============================================================
+Scanned at: 2026-06-08 12:03:16
+Image size : 1100x1700 px
+  Tried [upscaled 2x] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+
+
+
+============================================================
+
+============================================================
+
+============================================================
+Scanned at: 2026-06-08 12:03:27
+Image size : 1654x2340 px
+============================================================
+Scanned at: 2026-06-08 12:03:27
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 12:03:27
+Image size : 1654x2340 px
+Scanned at: 2026-06-08 12:03:27
+Image size : 1654x2340 px
+Scanned at: 2026-06-08 12:03:27
+Image size : 1654x2340 px
+============================================================
+Scanned at: 2026-06-08 12:03:27
+Image size : 1653x2339 px
+
+============================================================
+Scanned at: 2026-06-08 12:03:27
+Image size : 1537x2339 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+  Tried [grayscale] → not found
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+
+============================================================
+Scanned at: 2026-06-08 12:03:31
+Image size : 1653x2339 px
+  Tried [upscaled 3x] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [upscaled 4x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 11] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [up2+adaptive] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [up3+otsu] → not found
+DECODE ERROR: string argument should contain only ASCII characters
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Tried [up2+adaptive] → not found
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+Scanned at: 2026-06-08 12:19:53
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 12:19:53
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 12:19:53
+Image size : 1656x2337 px
+
+============================================================
+Scanned at: 2026-06-08 12:19:53
+Image size : 1654x2340 px
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowODo0NQQHMzMzNS4wMAUGNDM1LjAw
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 2x] → FOUND
+STATUS      : FOUND (via upscaled 2x)
+RAW BASE64  : ARhQT1dFUiBTVFJFQU0gVFJBRElORyBFU1QCDzMxMDIyODc3NzcwMDAwMwMUMjAyNS0wMi0wNFQxMjoxODowMFoEBjIwNy4wMAUFMjcuMDA=
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : POWER STREAM TRADING EST
+  Supplier VAT   : 310228777700003
+  Invoice Date   : 2025-02-04T12:18:00Z
+  Total Amt+VAT  : 207.0
+  VAT Amount     : 27.0
+
+============================================================
+Scanned at: 2026-06-08 12:20:08
+Image size : 1654x2340 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0yN1QxNDowNjozNAQHMjI1NC4wMAUGMjk0LjAw
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:08:45
+  Total Amt+VAT  : 3335.0
+  VAT Amount     : 435.0
+
+============================================================
+Scanned at: 2026-06-08 12:20:09
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+
+============================================================
+Scanned at: 2026-06-08 12:20:11
+Image size : 1100x1700 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [upscaled 2x] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [upscaled 3x] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [sharp+up3] → not found
+  Tried [up3+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [clahe+up2] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up3+otsu] → not found
+
+============================================================
+Scanned at: 2026-06-08 12:20:17
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 12:20:17
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 12:20:17
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 12:20:17
+Image size : 1654x2340 px
+
+============================================================
+Scanned at: 2026-06-08 12:20:17
+Image size : 1654x2340 px
+  Tried [up3+adaptive] → not found
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-27T14:06:34
+  Total Amt+VAT  : 2254.0
+  VAT Amount     : 294.0
+  Tried [original colour] → FOUND
+  Tried [original colour] → FOUND
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPYtNix2YPYqSDYp9mE2YbYp9mB2Lkg2YTZhNit2K/ZitivINin2YTZhdit2K/ZiNiv2KkCDzMwMDE1OTI2MjEwMDAwMwMTMjAyNS0wMS0xMlQxMjo1NjowMAQGNTAwLjAwBQU2NS4yMgYsZTRWU3BLeE1KeEJxcVFoNzhObUE2NnFPcDIvZkt1bU0xNWdNYWcybE94MD0HYE1FVUNJQ2ZqbzVqVWYxYXNWOW9kQytEcUZVTkI0U0JXNkhwY0t4Yk54SUlwZVpITEFpRUFuWVFwcGd5SHFMU1lsS2FlTXVNRE5lWkdvSFBWRkFQNFpxUXRUd01taWNBPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDycgdQHwuyX5ZKRpyHhWICcZKesfooEWigdwnlOeOrlnXY+EqjcBiPDJl7riIbRNQObnUakFM1/PyacIJHtyPA==
+STATUS      : FOUND (via original colour)
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjoxMjowMFoEBjgzNS41OQUGMTA4Ljk5
+RAW BASE64  : ASdNRU1BUiBBTC1NT1RBVEFXRVJBIEdFTkVSQUwgQ09OVFJBQ1RJTkcCDzMxMTU4NzYwMTQwMDAwMwMTMjAyNS0wMS0xMlQxNDo1MDo0NgQHMzkwNy43MAUGNTA5Ljcw
+
+============================================================
+Scanned at: 2026-06-08 12:20:19
+Image size : 1653x2339 px
+  Tried [original colour] → not found
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ATPZhdik2LPYs9ipINi12KfYqNixINmE2YTYrtiv2YXYp9iqINin2YTYtdmG2KfYudmK2KkCDzMwMDQwMzM3NDMwMDAwMwMUMjAyNS0wMS0wOVQwNjowODowMFoEBzI0OTQuMDEFBjMyNS4zMQ==
+  Tried [grayscale] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : اسم المورد: تكامل القابضة
+رقم تسجيل ضريبة القيمة المضافة للمورد :300892771500003
+ الطابع الزمني للفاتورة:2024-09-24إجمالي ضريبة القيمة المضافة:
+892.50
+إجمالي الفاتورة أو الاشعار (مع ضريبة القيمة المضافة):6842.5
+  Tried [upscaled 2x] → not found
+
+============================================================
+Scanned at: 2026-06-08 12:20:21
+Image size : 1537x2339 px
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 3x] → not found
+
+============================================================
+Scanned at: 2026-06-08 12:20:22
+Image size : 1653x2339 px
+  Tried [upscaled 3x] → not found
+  Tried [original colour] → not found
+  Tried [grayscale] → not found
+  Tried [upscaled 2x] → not found
+  Tried [upscaled 4x] → not found
+  Tried [upscaled 3x] → not found
+  Tried [otsu] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [upscaled 4x] → not found
+  Tried [otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [adaptive 11] → not found
+  Tried [adaptive 15] → not found
+  Tried [sharpened] → not found
+  Tried [sharpened+otsu] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up2] → not found
+  Tried [sharp+up3] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up2+otsu] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [sharp+up3] → not found
+  Tried [clahe+up2] → not found
+  Tried [up2+adaptive] → not found
+  Tried [clahe+up2+otsu] → not found
+  Tried [up2+adaptive] → not found
+  Tried [sharp+up3+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [clahe] → not found
+  Tried [clahe+otsu] → not found
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up3+adaptive] → not found
+  Tried [clahe+up2] → not found
+DECODED TLV :
+  Supplier Name  : شركة النافع للحديد المحدودة
+  Supplier VAT   : 300159262100003
+  Invoice Date   : 2025-01-12T12:56:00
+  Total Amt+VAT  : 500.0
+  VAT Amount     : 65.22
+  Tried [clahe+up2+otsu] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+  Tried [up2+adaptive] → not found
+DECODE ERROR: string argument should contain only ASCII characters
+DECODED TLV :
+  Supplier Name  : MEMAR AL-MOTATAWERA GENERAL CONTRACTING
+  Supplier VAT   : 311587601400003
+  Invoice Date   : 2025-01-12T14:50:46
+  Total Amt+VAT  : 3907.7
+  VAT Amount     : 509.7
+  Tried [up3+otsu] → not found
+  Tried [up3+adaptive] → not found
+  Tried [up4+otsu] → not found
+STATUS      : NOT FOUND — all preprocessing variants failed.
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:12:00Z
+  Total Amt+VAT  : 835.59
+  VAT Amount     : 108.99
+DECODED TLV :
+  Supplier Name  : مؤسسة صابر للخدمات الصناعية
+  Supplier VAT   : 300403374300003
+  Invoice Date   : 2025-01-09T06:08:00Z
+  Total Amt+VAT  : 2494.01
+  VAT Amount     : 325.31
+
+============================================================
+Scanned at: 2026-06-08 12:25:43
+Image size : 1650x2200 px
+
+============================================================
+Scanned at: 2026-06-08 12:25:43
+Image size : 1650x2200 px
+
+============================================================
+Scanned at: 2026-06-08 12:25:43
+Image size : 1650x2200 px
+
+============================================================
+Scanned at: 2026-06-08 12:25:43
+Image size : 1650x2200 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBzE2MjYuNjYFBjIxMi4xMw==
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBzEwODQuNDQFBjE0MS40Mg==
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
+
+============================================================
+Scanned at: 2026-06-08 12:25:56
+Image size : 1650x2200 px
+  Tried [original colour] → FOUND
+STATUS      : FOUND (via original colour)
+RAW BASE64  : ARhDb3JhbCBCZWFjaCBIb3RlbCBKdWJhaWwCDzMwMDM3MDA3NzcwMDAwMwMEBjU0Mi4yMgUFNzAuNzE=
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 108
+  Total Amt+VAT  : 1084.44
+  VAT Amount     : 141.42
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 162
+  Total Amt+VAT  : 1626.66
+  VAT Amount     : 212.13
+DECODED TLV :
+  Supplier Name  : Coral Beach Hotel Jubail
+  Supplier VAT   : 300370077700003
+  Invoice Date   : 542
+  Total Amt+VAT  : 542.22
+  VAT Amount     : 70.71
